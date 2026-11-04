@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Omar Khaled - Performance Media Buyer. Scale your e-commerce ads with data-driven Meta campaigns.">
+    <meta name="theme-color" content="#1877F2">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231877F2'/%3E%3Ctext x='50' y='66' font-size='52' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'%3EOK%3C/text%3E%3C/svg%3E">
+    <title>Omar Khaled — Performance Media Buyer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#1877F2',
+                            whatsapp: '#25D366',
+                            whatsappDark: '#1EBE57',
+                            slateBg: '#F8FAFC',
+                            cardBorder: '#E2E8F0',
+                            metaBg: '#F0F2F5',
+                            textPrimary: '#0F172A',
+                            textSecondary: '#475569'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #0F172A;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Animated Background Orbs */
+        .ambient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.5;
+            z-index: 0;
+            pointer-events: none;
+            animation: floatOrb 20s ease-in-out infinite alternate;
+        }
+
+        .blob-1 {
+            top: -5%;
+            left: -5%;
+            width: 480px;
+            height: 480px;
+            background: radial-gradient(circle, rgba(24, 119, 242, 0.22) 0%, rgba(99, 102, 241, 0.12) 100%);
+            animation-duration: 22s;
+        }
+
+        .blob-2 {
+            top: 30%;
+            right: -8%;
+            width: 520px;
+            height: 520px;
+            background: radial-gradient(circle, rgba(37, 211, 102, 0.18) 0%, rgba(16, 185, 129, 0.08) 100%);
+            animation-duration: 26s;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            bottom: 15%;
+            left: -10%;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(254, 44, 85, 0.12) 0%, rgba(0, 242, 254, 0.1) 100%);
+            animation-duration: 24s;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatOrb {
+            0% {
+                transform: translate(0px, 0px) scale(1) rotate(0deg);
+            }
+            50% {
+                transform: translate(45px, 65px) scale(1.12) rotate(180deg);
+            }
+            100% {
+                transform: translate(-35px, 25px) scale(0.95) rotate(360deg);
+            }
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.85);
+        }
+
+        .meta-shadow {
+            box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 4px 12px -2px rgba(15, 23, 42, 0.02);
+        }
+
+        .glow-wa {
+            box-shadow: 0 8px 25px -5px rgba(37, 211, 102, 0.35);
+        }
+        .glow-wa:hover {
+            box-shadow: 0 12px 32px -3px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Meta Ads Table Styling */
+        .ads-table th {
+            background-color: rgba(241, 245, 249, 0.85);
+            color: #475569;
+            font-size: 0.725rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.75rem 1rem;
+        }
+        .ads-table td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid #E2E8F0;
+            font-size: 0.85rem;
+        }
+
+        /* Canvas Particle Styling */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-100 selection:text-blue-900 relative">
+
+    <!-- Interactive Particle Background Canvas -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Animated Ambient Mesh Blobs -->
+    <div class="ambient-blob blob-1"></div>
+    <div class="ambient-blob blob-2"></div>
+    <div class="ambient-blob blob-3"></div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <div class="relative z-10">
+
+        <!-- HEADER / NAVBAR -->
+        <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                <!-- Branding Only (No CTAs in Navbar) -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-blue-700 flex items-center justify-center font-bold text-white text-lg shadow-md group-hover:scale-105 transition-transform">
+                        OK
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-lg leading-tight text-slate-900 tracking-tight">Omar Khaled</span>
+                        <span class="text-xs text-blue-600 font-semibold tracking-wide">Performance Media Buyer</span>
+                    </div>
+                </a>
+            </div>
+        </header>
+
+        <!-- HERO SECTION -->
+        <section class="pt-12 pb-16 md:pt-20 md:pb-24 relative">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                
+                <!-- Live Availability Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50/90 border border-emerald-200/80 text-emerald-800 text-xs font-semibold mb-6 backdrop-blur-sm shadow-sm hover:scale-105 transition-transform cursor-default">
+                    <span class="relative flex h-2.5 w-2.5">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                    </span>
+                    Available for New E-commerce Scaling Accounts
+                </div>
+
+                <!-- Headline -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-6">
+                    Turn Paid Ad Spend Into <br class="hidden sm:inline"/>
+                    <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 bg-clip-text text-transparent">Predictable E-Commerce Revenue</span>
+                </h1>
+
+                <!-- Subheading -->
+                <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed mb-8">
+                    Hi, I'm <strong class="text-slate-900 font-semibold">Omar Khaled</strong>. I optimize & scale performance media buying across Meta, Google, and TikTok using data-driven CBO strategies, Bid Caps, and Dynamic Product Ads.
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/201033177357?text=Hi%20Omar,%20I%20want%20to%20discuss%20scaling%20my%20store's%20ROAS." 
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="w-full sm:w-auto px-8 py-4 bg-brand-whatsapp hover:bg-brand-whatsappDark text-white font-bold text-base rounded-2xl shadow-lg glow-wa transition-all transform hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-3">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <span>Chat on WhatsApp</span>
+                    </a>
+                    
+                    <a href="#results" class="w-full sm:w-auto px-8 py-4 bg-white/90 hover:bg-white text-slate-800 border border-slate-300 font-bold text-base rounded-2xl shadow-sm transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 backdrop-blur-sm">
+                        <span>View Verified Results</span>
+                        <i class="fa-solid fa-arrow-down text-xs text-slate-400"></i>
+                    </a>
+                </div>
+
+                <!-- Metric Summary Highlights -->
+                <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                    <div class="glass-card p-5 rounded-2xl meta-shadow text-center hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Account ROAS</div>
+                        <div class="text-3xl font-extrabold text-blue-600 font-mono">3.88x</div>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl meta-shadow text-center hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Top Campaign ROAS</div>
+                        <div class="text-3xl font-extrabold text-emerald-600 font-mono">5.70x</div>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl meta-shadow text-center hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Generated Revenue</div>
+                        <div class="text-3xl font-extrabold text-slate-900 font-mono">142.1k <span class="text-xs text-slate-500 font-sans">EGP</span></div>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl meta-shadow text-center hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Total Purchases</div>
+                        <div class="text-3xl font-extrabold text-indigo-600 font-mono">33 <span class="text-xs text-slate-500 font-sans">(35 Total)</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- VERIFIED RESULTS / ADS MANAGER DASHBOARD -->
+        <section id="results" class="py-16 bg-white/60 backdrop-blur-md border-t border-b border-slate-200/80 relative">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                    <div>
+                        <div class="inline-flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">
+                            <i class="fa-brands fa-meta text-sm animate-bounce"></i> Meta Ads Manager Proof
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Verified Client Campaign Results</h2>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2 md:mt-0 font-mono">
+                        <i class="fa-regular fa-calendar-check mr-1 text-blue-500"></i> Period: 1 Sep 2026 - 20 Oct 2026
+                    </p>
+                </div>
+
+                <!-- Meta Ads Manager UI Component -->
+                <div class="glass-card border border-slate-300 rounded-2xl overflow-hidden meta-shadow hover:shadow-2xl transition-shadow duration-500">
+                    
+                    <!-- Ads Manager Toolbar Header -->
+                    <div class="bg-slate-100/90 px-4 py-3 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600">
+                        <div class="flex items-center gap-2 font-medium">
+                            <span class="px-2.5 py-1 bg-blue-600 text-white rounded font-bold text-[11px] shadow-sm"><i class="fa-solid fa-layer-group mr-1"></i> Campaigns</span>
+                            <span class="text-slate-400">|</span>
+                            <span class="font-semibold text-slate-800">Omar Khaled — E-Commerce Scaling Account</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="px-2.5 py-1 bg-emerald-100/90 text-emerald-800 rounded-full font-bold text-[11px] flex items-center gap-1.5 border border-emerald-200">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span> Active Campaigns
+                            </span>
+                            <span class="hidden sm:inline text-slate-500 font-mono text-[11px]">Meta Account Status: Active</span>
+                        </div>
+                    </div>
+
+                    <!-- Aggregate Performance Metrics -->
+                    <div class="p-6 bg-slate-50/70 border-b border-slate-200 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                        <div>
+                            <div class="text-[11px] font-semibold text-slate-500 uppercase">Amount Spent</div>
+                            <div class="text-lg font-bold text-slate-900 font-mono mt-0.5">36,604.85 <span class="text-xs font-normal text-slate-500">EGP</span></div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] font-semibold text-slate-500 uppercase">Purchases Value</div>
+                            <div class="text-lg font-bold text-emerald-600 font-mono mt-0.5">142,100.00 <span class="text-xs font-normal text-slate-500">EGP</span></div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] font-semibold text-slate-500 uppercase">Overall ROAS</div>
+                            <div class="text-lg font-extrabold text-blue-600 font-mono mt-0.5">3.88x</div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] font-semibold text-slate-500 uppercase">Purchases</div>
+                            <div class="text-lg font-bold text-slate-900 font-mono mt-0.5">33 <span class="text-xs text-slate-400 font-normal">(35 Total)</span></div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] font-semibold text-slate-500 uppercase">Adds to Cart</div>
+                            <div class="text-lg font-bold text-slate-900 font-mono mt-0.5">274</div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] font-semibold text-slate-500 uppercase">Reach</div>
+                            <div class="text-lg font-bold text-slate-900 font-mono mt-0.5">87,723</div>
+                        </div>
+                    </div>
+
+                    <!-- Campaign Breakdown Table -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left ads-table">
+                            <thead>
+                                <tr>
+                                    <th>Campaign Name</th>
+                                    <th>Amount Spent (EGP)</th>
+                                    <th>Reach</th>
+                                    <th>Adds to Cart</th>
+                                    <th>Purchases</th>
+                                    <th>ROAS</th>
+                                    <th>Conversion Value</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200">
+                                
+                                <!-- Campaign 1 -->
+                                <tr class="hover:bg-blue-50/40 transition-colors">
+                                    <td class="font-semibold text-slate-900">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                            <span>CBO | DPA | 19 Sep</span>
+                                        </div>
+                                    </td>
+                                    <td class="font-mono text-slate-700">19,020.67</td>
+                                    <td class="font-mono text-slate-600">45,561</td>
+                                    <td class="font-mono text-slate-600">170</td>
+                                    <td class="font-mono font-bold text-slate-900">20</td>
+                                    <td>
+                                        <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold font-mono text-xs shadow-sm">4.99x</span>
+                                    </td>
+                                    <td class="font-mono font-extrabold text-emerald-600">94,850.00 EGP</td>
+                                </tr>
+
+                                <!-- Campaign 2 -->
+                                <tr class="hover:bg-blue-50/40 transition-colors bg-blue-50/20">
+                                    <td class="font-semibold text-slate-900">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                            <span>CBO | DPA - Bid Cap | 1...</span>
+                                        </div>
+                                    </td>
+                                    <td class="font-mono text-slate-700">3,062.86</td>
+                                    <td class="font-mono text-slate-600">7,280</td>
+                                    <td class="font-mono text-slate-600">32</td>
+                                    <td class="font-mono font-bold text-slate-900">6</td>
+                                    <td>
+                                        <span class="px-2.5 py-1 bg-indigo-100 text-indigo-800 rounded font-bold font-mono text-xs shadow-sm">5.70x</span>
+                                    </td>
+                                    <td class="font-mono font-extrabold text-emerald-600">17,450.00 EGP</td>
+                                </tr>
+
+                                <!-- Campaign 3 -->
+                                <tr class="hover:bg-blue-50/40 transition-colors">
+                                    <td class="font-semibold text-slate-900">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                            <span>CBO 14/Oct Bundles</span>
+                                        </div>
+                                    </td>
+                                    <td class="font-mono text-slate-700">9,479.48</td>
+                                    <td class="font-mono text-slate-600">26,067</td>
+                                    <td class="font-mono text-slate-600">51</td>
+                                    <td class="font-mono font-bold text-slate-900">6</td>
+                                    <td>
+                                        <span class="px-2.5 py-1 bg-blue-100 text-blue-800 rounded font-bold font-mono text-xs">2.75x</span>
+                                    </td>
+                                    <td class="font-mono font-extrabold text-slate-900">26,050.00 EGP</td>
+                                </tr>
+
+                                <!-- Campaign 4 -->
+                                <tr class="hover:bg-blue-50/40 transition-colors">
+                                    <td class="font-semibold text-slate-900">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                            <span>CBO | DPA | 6 oct Ahm...</span>
+                                        </div>
+                                    </td>
+                                    <td class="font-mono text-slate-700">5,022.42</td>
+                                    <td class="font-mono text-slate-600">26,306</td>
+                                    <td class="font-mono text-slate-600">21</td>
+                                    <td class="font-mono font-bold text-slate-900">3</td>
+                                    <td>
+                                        <span class="px-2.5 py-1 bg-slate-200 text-slate-700 rounded font-bold font-mono text-xs">0.75x</span>
+                                    </td>
+                                    <td class="font-mono font-extrabold text-slate-900">3,750.00 EGP</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="px-6 py-3 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+                        <span>Showing top scaling campaign benchmarks</span>
+                        <span class="font-semibold text-slate-700"><i class="fa-solid fa-shield-halved text-emerald-500 mr-1"></i> Actual Ads Manager Verified Report</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PLATFORMS HANDLED SECTION -->
+        <section class="py-16">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Cross-Platform Media Buying</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Platforms Handled</h2>
+                    <p class="text-sm text-slate-600 mt-2">Proficient in orchestrating high-ROAS paid media acquisition across all major channels.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Meta Ads -->
+                    <div class="glass-card p-8 rounded-3xl meta-shadow hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+                        <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm group-hover:rotate-6 transition-transform">
+                            <i class="fa-brands fa-meta"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 mb-2">Meta Ads</h3>
+                        <p class="text-xs text-blue-600 font-semibold mb-4">Facebook & Instagram Campaigns</p>
+                        <ul class="space-y-2.5 text-xs text-slate-600">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-blue-500"></i> CBO & Bid Cap Scaling Strategies</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-blue-500"></i> Dynamic Product Ads (DPA) Retargeting</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-blue-500"></i> High-converting Creative Hook Testing</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-blue-500"></i> Meta Pixel & Conversions API (CAPI)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Google Ads -->
+                    <div class="glass-card p-8 rounded-3xl meta-shadow hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+                        <div class="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm group-hover:rotate-6 transition-transform">
+                            <i class="fa-brands fa-google"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 mb-2">Google Ads</h3>
+                        <p class="text-xs text-amber-600 font-semibold mb-4">Search, PMax & YouTube</p>
+                        <ul class="space-y-2.5 text-xs text-slate-600">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Performance Max (PMax) E-commerce Setup</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> High-Intent Search Campaign Funnels</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Merchant Center & Product Feed Audits</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> YouTube Video Ads & Remarketing</li>
+                        </ul>
+                    </div>
+
+                    <!-- TikTok Ads -->
+                    <div class="glass-card p-8 rounded-3xl meta-shadow hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-slate-900/10 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+                        <div class="w-14 h-14 bg-slate-100 text-slate-900 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm group-hover:rotate-6 transition-transform">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 mb-2">TikTok Ads</h3>
+                        <p class="text-xs text-slate-700 font-semibold mb-4">UGC & Social Commerce</p>
+                        <ul class="space-y-2.5 text-xs text-slate-600">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-slate-800"></i> Spark Ads & Organic Post Amplification</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-slate-800"></i> Short-form Creative Hook Testing</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-slate-800"></i> Catalog Sales & Fast-Checkout Funnels</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-slate-800"></i> Custom & Lookalike Audience Scaling</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CORE MEDIA BUYING SERVICES -->
+        <section class="py-16 bg-white/50 backdrop-blur-md border-t border-b border-slate-200/80">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Growth Engine</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Core Capabilities</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Feature 1 -->
+                    <div class="glass-card p-6 rounded-2xl meta-shadow hover:border-blue-500 hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-xl mb-4 font-bold shadow-sm">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base mb-2">CBO & Bid Cap Scaling</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Structuring Campaign Budget Optimization with strict bid caps to protect profit margins as ad spend scales.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="glass-card p-6 rounded-2xl meta-shadow hover:border-emerald-500 hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-4 font-bold shadow-sm">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base mb-2">Dynamic Product Ads (DPA)</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Automatically retargeting store visitors with synchronized product catalogs to complete abandoned checkouts.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="glass-card p-6 rounded-2xl meta-shadow hover:border-indigo-500 hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-xl mb-4 font-bold shadow-sm">
+                            <i class="fa-solid fa-vial"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base mb-2">Creative Testing Framework</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Structured weekly testing for winning video hooks, primary copy angles, and high-CTR visual assets.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="glass-card p-6 rounded-2xl meta-shadow hover:border-purple-500 hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center text-xl mb-4 font-bold shadow-sm">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base mb-2">Server-Side Tracking (CAPI)</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Full Meta CAPI and Google Tag Manager server-side implementation to recover lost tracking data post-iOS 14.5.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- WHATSAPP CONTACT BANNER -->
+        <section class="py-16">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white rounded-3xl p-8 sm:p-12 text-center shadow-2xl relative overflow-hidden group">
+                    
+                    <div class="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/20 rounded-full blur-3xl group-hover:bg-emerald-500/30 transition-colors"></div>
+                    <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl group-hover:bg-blue-500/30 transition-colors"></div>
+
+                    <h2 class="text-2xl sm:text-4xl font-extrabold mb-3 relative z-10">Ready to Scale Your Store's ROAS?</h2>
+                    <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed relative z-10">
+                        Let's analyze your current account structure and build a customized media buying scaling plan. Click below to connect with me directly on WhatsApp.
+                    </p>
+
+                    <a href="https://wa.me/201033177357?text=Hello%20Omar,%20I%20am%20interested%20in%20scaling%20my%20ad%20campaigns%20with%20you." 
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center gap-3 px-8 py-4 bg-brand-whatsapp hover:bg-brand-whatsappDark text-white font-bold text-lg rounded-2xl shadow-lg glow-wa transition-all transform hover:scale-105 relative z-10">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <span>Chat on WhatsApp</span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="py-8 bg-slate-100/80 backdrop-blur-md border-t border-slate-200">
+            <div class="max-w-6xl mx-auto px-4 text-center text-xs text-slate-500">
+                <p>© 2026 Omar Khaled — Performance Media Buyer. All campaign data verified from Meta Ads Manager dashboard reports.</p>
+            </div>
+        </footer>
+
+        <!-- FLOATING WHATSAPP BUTTON -->
+        <div class="fixed bottom-6 right-6 z-50">
+            <a href="https://wa.me/201033177357?text=Hi%20Omar,%20I%20want%20to%20discuss%20scaling%20my%20ad%20campaigns." 
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Chat on WhatsApp"
+               class="group flex items-center gap-3 px-4 py-3 bg-brand-whatsapp hover:bg-brand-whatsappDark text-white font-bold text-sm rounded-full shadow-2xl glow-wa transition-all transform hover:scale-110 active:scale-95">
+                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                <span class="hidden sm:inline">Chat on WhatsApp</span>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- BACKGROUND ANIMATED PARTICLE CANVAS SCRIPT -->
+    <script>
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.35;
+                this.speedY = (Math.random() - 0.5) * 0.35;
+                this.alpha = Math.random() * 0.3 + 0.1;
+                const colors = ['#1877F2', '#10B981', '#6366F1'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        const particles = Array.from({ length: 40 }, () => new Particle());
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.onload = function() {
+            animate();
+        };
+    </script>
+</body>
+</html>
