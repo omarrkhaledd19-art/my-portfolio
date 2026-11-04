@@ -159,6 +159,36 @@
         .reveal.in{opacity:1;transform:none}
         @media (max-width:640px){.brand-item{width:150px}.brand-logo{width:72px;height:72px;border-radius:18px}.brands-track{animation-duration:26s}}
         @media (prefers-reduced-motion:reduce){.brands-track{animation:none}.reveal{opacity:1;transform:none;transition:none}.brands-marquee{overflow-x:auto}}
+
+        /* What I Do services marquee */
+        .svc-marquee{position:relative;overflow:hidden;padding:12px 0 28px;
+            -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+        .svc-track{display:flex;width:max-content;animation:svcScroll 55s linear infinite;will-change:transform}
+        .svc-marquee:hover .svc-track{animation-play-state:paused}
+        .svc-group{display:flex;flex-shrink:0}
+        .svc-card{width:380px;flex-shrink:0;margin-right:24px;background:#fff;border:1px solid #E2E8F0;border-radius:22px;overflow:hidden;box-shadow:0 10px 30px -14px rgba(15,23,42,.18);display:flex;flex-direction:column;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease}
+        .svc-card:hover{transform:translateY(-8px);box-shadow:0 24px 40px -16px rgba(15,23,42,.3)}
+        .svc-head{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:28px 26px;height:132px;overflow:hidden;color:#fff}
+        .svc-head::after{content:"";position:absolute;right:-40px;top:-50px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.1);transition:transform .6s ease}
+        .svc-card:hover .svc-head::after{transform:scale(1.5)}
+        .svc-icon{position:relative;z-index:1;width:54px;height:54px;flex-shrink:0;border-radius:16px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;font-size:24px;transition:transform .4s ease}
+        .svc-card:hover .svc-icon{transform:rotate(-8deg) scale(1.12)}
+        .svc-title{position:relative;z-index:1;font-size:16px;font-weight:700;text-align:right;margin-top:2px}
+        .svc-blue{background:linear-gradient(120deg,#1E3A6E,#2F5AA5)}
+        .svc-green{background:linear-gradient(120deg,#0B3D2B,#1F8A62)}
+        .svc-navy{background:linear-gradient(120deg,#0F2C5C,#1F6AB0)}
+        .svc-purple{background:linear-gradient(120deg,#3A0F4F,#7B2D96)}
+        .svc-brown{background:linear-gradient(120deg,#4A1E0A,#9A4A14)}
+        .svc-teal{background:linear-gradient(120deg,#0B3A4F,#1F7A92)}
+        .svc-body{padding:26px;display:flex;flex-direction:column;gap:20px;flex:1}
+        .svc-body p{font-size:15px;line-height:1.7;color:#334155}
+        .svc-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+        .svc-pill{padding:7px 16px;border-radius:999px;background:#EEF2F8;border:1px solid #DDE5F0;color:#1E3A6E;font-size:13px;font-weight:600;transition:background .25s,color .25s,transform .25s}
+        .svc-card:hover .svc-pill{background:#E3ECFA}
+        .svc-pill:hover{background:#1E3A6E;color:#fff;transform:translateY(-2px)}
+        @keyframes svcScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        @media (max-width:640px){.svc-card{width:300px;margin-right:16px}.svc-head{height:116px;padding:22px}.svc-body{padding:22px}.svc-track{animation-duration:45s}}
+        @media (prefers-reduced-motion:reduce){.svc-track{animation:none}.svc-marquee{overflow-x:auto;-webkit-mask-image:none;mask-image:none}}
     </style>
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 relative">
@@ -414,6 +444,25 @@
 
                 </div>
 
+            </div>
+        </section>
+
+
+        <!-- WHAT I DO (infinite horizontal services marquee) -->
+        <section id="services" class="py-16 overflow-hidden">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal flex items-center gap-3 mb-4">
+                    <span class="block w-9 h-0.5 bg-blue-600 rounded"></span>
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-[0.3em]">What I Do</span>
+                </div>
+                <h2 class="reveal text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-xl">Services Built for Serious Growth.</h2>
+                <p class="reveal text-sm sm:text-base text-slate-600 mt-3 max-w-xl">Full-funnel paid media — from strategy to daily optimization across every platform.</p>
+            </div>
+            <div class="reveal svc-marquee mt-10" aria-label="Services">
+                <div class="svc-track">
+                    <div class="svc-group"><article class="svc-card"><div class="svc-head svc-blue"><span class="svc-icon">📊</span><h3 class="svc-title">Paid Media Management</h3></div><div class="svc-body"><p>End-to-end campaign management. TOF/MOF/BOF architecture, daily budget shifts, kill rules, and ROAS scaling with data-backed decisions.</p><div class="svc-tags"><span class="svc-pill">Meta</span><span class="svc-pill">TikTok</span><span class="svc-pill">Snapchat</span><span class="svc-pill">Google</span></div></div></article><article class="svc-card"><div class="svc-head svc-green"><span class="svc-icon">🎯</span><h3 class="svc-title">Lead Generation (High Ticket)</h3></div><div class="svc-body"><p>Qualified lead strategies for clinics, education, and services. Website-redirect funnels, audience segmentation, and CPL optimization.</p><div class="svc-tags"><span class="svc-pill">Beauty Clinics</span><span class="svc-pill">Aviation</span><span class="svc-pill">High Ticket</span></div></div></article><article class="svc-card"><div class="svc-head svc-navy"><span class="svc-icon">🛍️</span><h3 class="svc-title">E-Commerce Scaling</h3></div><div class="svc-body"><p>Fashion, fragrance, beauty, and accessories brands scaled profitably. Proven across Egypt, KSA, Kuwait, and UAE.</p><div class="svc-tags"><span class="svc-pill">Egypt</span><span class="svc-pill">KSA</span><span class="svc-pill">Kuwait</span><span class="svc-pill">UAE</span></div></div></article><article class="svc-card"><div class="svc-head svc-purple"><span class="svc-icon">📱</span><h3 class="svc-title">Mobile App Growth</h3></div><div class="svc-body"><p>App install campaigns with event optimization via Firebase, focused on lowering CPI while sustaining high-volume monthly installs.</p><div class="svc-tags"><span class="svc-pill">App Installs</span><span class="svc-pill">Event Optimization</span><span class="svc-pill">Firebase</span></div></div></article><article class="svc-card"><div class="svc-head svc-brown"><span class="svc-icon">📋</span><h3 class="svc-title">Media Strategy &amp; Planning</h3></div><div class="svc-body"><p>Full campaign briefs, audience mapping, budget allocation in EGP/SAR/USD, creative frameworks, and KPI targets per funnel stage.</p><div class="svc-tags"><span class="svc-pill">Full Funnel</span><span class="svc-pill">Creative Briefs</span><span class="svc-pill">Budget Planning</span></div></div></article><article class="svc-card"><div class="svc-head svc-teal"><span class="svc-icon">📈</span><h3 class="svc-title">Performance Reporting</h3></div><div class="svc-body"><p>Monthly client reports with real insights — what worked, what didn't, and the exact roadmap for the next sprint. Arabic &amp; English.</p><div class="svc-tags"><span class="svc-pill">Arabic</span><span class="svc-pill">English</span><span class="svc-pill">Dashboards</span></div></div></article></div>
+                    <div class="svc-group" aria-hidden="true"><article class="svc-card" aria-hidden="true"><div class="svc-head svc-blue"><span class="svc-icon">📊</span><h3 class="svc-title">Paid Media Management</h3></div><div class="svc-body"><p>End-to-end campaign management. TOF/MOF/BOF architecture, daily budget shifts, kill rules, and ROAS scaling with data-backed decisions.</p><div class="svc-tags"><span class="svc-pill">Meta</span><span class="svc-pill">TikTok</span><span class="svc-pill">Snapchat</span><span class="svc-pill">Google</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-green"><span class="svc-icon">🎯</span><h3 class="svc-title">Lead Generation (High Ticket)</h3></div><div class="svc-body"><p>Qualified lead strategies for clinics, education, and services. Website-redirect funnels, audience segmentation, and CPL optimization.</p><div class="svc-tags"><span class="svc-pill">Beauty Clinics</span><span class="svc-pill">Aviation</span><span class="svc-pill">High Ticket</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-navy"><span class="svc-icon">🛍️</span><h3 class="svc-title">E-Commerce Scaling</h3></div><div class="svc-body"><p>Fashion, fragrance, beauty, and accessories brands scaled profitably. Proven across Egypt, KSA, Kuwait, and UAE.</p><div class="svc-tags"><span class="svc-pill">Egypt</span><span class="svc-pill">KSA</span><span class="svc-pill">Kuwait</span><span class="svc-pill">UAE</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-purple"><span class="svc-icon">📱</span><h3 class="svc-title">Mobile App Growth</h3></div><div class="svc-body"><p>App install campaigns with event optimization via Firebase, focused on lowering CPI while sustaining high-volume monthly installs.</p><div class="svc-tags"><span class="svc-pill">App Installs</span><span class="svc-pill">Event Optimization</span><span class="svc-pill">Firebase</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-brown"><span class="svc-icon">📋</span><h3 class="svc-title">Media Strategy &amp; Planning</h3></div><div class="svc-body"><p>Full campaign briefs, audience mapping, budget allocation in EGP/SAR/USD, creative frameworks, and KPI targets per funnel stage.</p><div class="svc-tags"><span class="svc-pill">Full Funnel</span><span class="svc-pill">Creative Briefs</span><span class="svc-pill">Budget Planning</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-teal"><span class="svc-icon">📈</span><h3 class="svc-title">Performance Reporting</h3></div><div class="svc-body"><p>Monthly client reports with real insights — what worked, what didn't, and the exact roadmap for the next sprint. Arabic &amp; English.</p><div class="svc-tags"><span class="svc-pill">Arabic</span><span class="svc-pill">English</span><span class="svc-pill">Dashboards</span></div></div></article></div>
+                </div>
             </div>
         </section>
 
