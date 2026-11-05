@@ -40,7 +40,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F8FAFC;
+            background-color: #ECEEF2;
             color: #0F172A;
             overflow-x: hidden;
         }
@@ -203,9 +203,144 @@
         .hero-in{opacity:0;transform:translateY(22px);animation:heroIn .8s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--d,0ms)}
         @keyframes heroIn{to{opacity:1;transform:none}}
         @media (prefers-reduced-motion:reduce){.hero-in{opacity:1;transform:none;animation:none}.hero-glow{animation:none}}
+
+        /* Verified results */
+        .rs-section{background:linear-gradient(180deg,#F6F7F9 0%,#EEF0F4 100%)}
+        .rs-glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;opacity:.5}
+        .rs-glow-1{width:380px;height:380px;background:rgba(59,130,246,.22);top:-120px;right:-100px;animation:rsFloat 14s ease-in-out infinite alternate}
+        .rs-glow-2{width:320px;height:320px;background:rgba(16,185,129,.18);bottom:-120px;left:-80px;animation:rsFloat 18s ease-in-out infinite alternate-reverse}
+        @keyframes rsFloat{to{transform:translate(40px,30px) scale(1.15)}}
+        .rs-fade{opacity:0;transform:translateY(28px);transition:opacity .8s ease var(--d,0ms),transform .8s cubic-bezier(.2,.8,.2,1) var(--d,0ms)}
+        .rs-on .rs-fade{opacity:1;transform:none}
+        .rs-period{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:#fff;border:1px solid #D7DCE4;font-size:13px;font-weight:600;color:#334155;font-family:ui-monospace,monospace;box-shadow:0 2px 8px rgba(15,23,42,.05)}
+        .rs-frame{position:relative;background:#fff;border:1px solid #D7DCE4;border-radius:24px;overflow:hidden;box-shadow:0 40px 70px -40px rgba(15,23,42,.35)}
+        .rs-frame::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#3B82F6,#6366F1,#10B981,#3B82F6);background-size:300% 100%;animation:rsShine 6s linear infinite;z-index:2}
+        @keyframes rsShine{to{background-position:300% 0}}
+        .rs-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;background:#F6F7F9;border-bottom:1px solid #E5E9F0}
+        .rs-dots{display:inline-flex;gap:6px}.rs-dots i{width:10px;height:10px;border-radius:50%;background:#CBD5E1}.rs-dots i:nth-child(1){background:#F87171}.rs-dots i:nth-child(2){background:#FBBF24}.rs-dots i:nth-child(3){background:#34D399}
+        .rs-tab{padding:5px 12px;border-radius:8px;background:#2563EB;color:#fff;font-size:11px;font-weight:700;box-shadow:0 4px 10px -2px rgba(37,99,235,.5)}
+        .rs-live{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;background:#D1FAE5;border:1px solid #A7F3D0;color:#065F46;font-size:11px;font-weight:700}
+        .rs-live-dot{width:7px;height:7px;border-radius:50%;background:#059669;box-shadow:0 0 0 0 rgba(5,150,105,.6);animation:rsPulse 1.8s infinite}
+        @keyframes rsPulse{70%{box-shadow:0 0 0 8px rgba(5,150,105,0)}100%{box-shadow:0 0 0 0 rgba(5,150,105,0)}}
+        .rs-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:22px 20px;background:linear-gradient(180deg,#FAFBFC,#F3F5F8);border-bottom:1px solid #E5E9F0}
+        @media(min-width:640px){.rs-kpis{grid-template-columns:repeat(3,1fr)}}
+        @media(min-width:1024px){.rs-kpis{grid-template-columns:repeat(6,1fr);padding:24px}}
+        .rs-kpi{position:relative;overflow:hidden;padding:16px;border-radius:16px;background:#fff;border:1px solid #E5E9F0;box-shadow:0 2px 10px rgba(15,23,42,.04);opacity:0;transform:translateY(20px) scale(.96);transition:opacity .6s ease calc(var(--i)*90ms + 250ms),transform .6s cubic-bezier(.2,.8,.2,1) calc(var(--i)*90ms + 250ms),box-shadow .3s,border-color .3s}
+        .rs-on .rs-kpi{opacity:1;transform:none}
+        .rs-on .rs-kpi:hover{transform:translateY(-5px);box-shadow:0 18px 30px -14px rgba(15,23,42,.25);border-color:var(--c);transition-delay:0s}
+        .rs-kpi::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--c);transform:scaleX(0);transform-origin:left;transition:transform 1.1s cubic-bezier(.2,.8,.2,1) calc(var(--i)*90ms + 700ms)}
+        .rs-on .rs-kpi::after{transform:scaleX(1)}
+        .rs-kpi-top{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+        .rs-ic{width:30px;height:30px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,#fff)}
+        .rs-lab{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#64748B;line-height:1.2}
+        .rs-val{font-family:ui-monospace,monospace;font-weight:800;font-size:1.25rem;color:#0F172A;white-space:nowrap}
+        .rs-val small{font-size:11px;font-weight:500;color:#94A3B8;font-family:'Inter',sans-serif}
+        .rs-kpi-hi{background:linear-gradient(135deg,#1D4ED8,#6366F1);border-color:transparent}
+        .rs-kpi-hi .rs-lab{color:#C7D2FE}.rs-kpi-hi .rs-val{color:#fff;font-size:1.5rem}.rs-kpi-hi .rs-ic{background:rgba(255,255,255,.2);color:#fff}.rs-kpi-hi::after{background:#fff}
+        .rs-table th{white-space:nowrap}
+        .rs-row{opacity:0;transform:translateX(-18px);transition:opacity .6s ease calc(var(--i)*110ms + 900ms),transform .6s cubic-bezier(.2,.8,.2,1) calc(var(--i)*110ms + 900ms),background .25s}
+        .rs-on .rs-row{opacity:1;transform:none}
+        .rs-table tbody tr{border-bottom:1px solid #EEF1F5}
+        .rs-table tbody tr:hover{background:#EFF6FF;box-shadow:inset 3px 0 0 #3B82F6}
+        .rs-dot{width:9px;height:9px;border-radius:50%;background:#10B981;box-shadow:0 0 0 3px rgba(16,185,129,.18);flex-shrink:0}
+        .rs-top{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:999px;background:#FEF3C7;color:#B45309;font-size:10px;font-weight:700}
+        .rs-pill{display:inline-block;padding:4px 10px;border-radius:8px;font-family:ui-monospace,monospace;font-weight:800;font-size:12px}
+        .rs-pill-emerald{background:#D1FAE5;color:#065F46}.rs-pill-indigo{background:#E0E7FF;color:#3730A3}.rs-pill-blue{background:#DBEAFE;color:#1E40AF}.rs-pill-slate{background:#E2E8F0;color:#475569}
+        .rs-meter{display:block;width:90px;height:6px;border-radius:99px;background:#E8ECF2;overflow:hidden}
+        .rs-meter i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#3B82F6,#10B981);transition:width 1.4s cubic-bezier(.2,.8,.2,1) calc(var(--i,0)*110ms + 1.3s)}
+        .rs-row:nth-child(1) .rs-meter i{transition-delay:1.3s}.rs-row:nth-child(2) .rs-meter i{transition-delay:1.4s}.rs-row:nth-child(3) .rs-meter i{transition-delay:1.5s}.rs-row:nth-child(4) .rs-meter i{transition-delay:1.6s}
+        .rs-on .rs-meter i{width:var(--w)}
+        .rs-chart{padding:26px 24px;border-top:1px solid #E5E9F0;background:#FAFBFC}
+        .rs-crow{display:grid;grid-template-columns:1fr;gap:8px;padding:14px 0;border-bottom:1px dashed #E2E8F0;opacity:0;transform:translateY(16px);transition:opacity .6s ease calc(var(--i)*120ms + 1.5s),transform .6s ease calc(var(--i)*120ms + 1.5s)}
+        .rs-crow:last-child{border-bottom:0}
+        .rs-on .rs-crow{opacity:1;transform:none}
+        @media(min-width:768px){.rs-crow{grid-template-columns:230px 1fr;align-items:center;gap:20px}}
+        .rs-cname{font-size:13px;font-weight:700;color:#0F172A;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+        .rs-croas{padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;font-family:ui-monospace,monospace}
+        .rs-bars{display:flex;flex-direction:column;gap:7px}
+        .rs-track{display:flex;align-items:center;gap:10px;height:14px}
+        .rs-track span{font-size:11px;font-weight:600;color:#64748B;font-family:ui-monospace,monospace;white-space:nowrap}
+        .rs-bar{display:block;height:100%;width:0;border-radius:99px;transition:width 1.5s cubic-bezier(.2,.8,.2,1) calc(var(--i,0)*0s + 1.8s)}
+        .rs-crow:nth-of-type(2) .rs-bar{transition-delay:1.9s}.rs-crow:nth-of-type(3) .rs-bar{transition-delay:2s}.rs-crow:nth-of-type(4) .rs-bar{transition-delay:2.1s}.rs-crow:nth-of-type(5) .rs-bar{transition-delay:2.2s}
+        .rs-on .rs-bar{width:var(--w)}
+        .rs-bar-spend{background:linear-gradient(90deg,#94A3B8,#CBD5E1)}
+        .rs-bar-rev{background:linear-gradient(90deg,#10B981,#34D399);box-shadow:0 4px 12px -4px rgba(16,185,129,.6)}
+        .rs-key{display:inline-block;width:18px;height:8px;border-radius:99px}
+        .rs-foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:14px 20px;background:#F3F5F8;border-top:1px solid #E5E9F0;font-size:12px;color:#64748B}
+        @media(max-width:640px){.rs-val{font-size:1.05rem}.rs-kpi-hi .rs-val{font-size:1.25rem}.rs-chart{padding:20px 16px}}
+        @media (prefers-reduced-motion:reduce){.rs-fade,.rs-kpi,.rs-row,.rs-crow{opacity:1!important;transform:none!important;transition:none!important}.rs-meter i,.rs-bar{transition:none!important}.rs-kpi::after{transform:none;transition:none}.rs-frame::before,.rs-glow,.rs-live-dot{animation:none}}
+
+        /* Footer CTA */
+        .ft-card{position:relative;overflow:hidden;border-radius:32px;padding:72px 24px 64px;text-align:center;color:#fff;background:linear-gradient(135deg,#0B1B3A 0%,#12305F 55%,#1A3A72 100%);box-shadow:0 40px 70px -35px rgba(11,27,58,.7)}
+        .ft-circle{position:absolute;top:-130px;right:-90px;width:380px;height:380px;border-radius:50%;background:rgba(148,180,230,.16);animation:ftFloat 12s ease-in-out infinite alternate}
+        .ft-orb{position:absolute;bottom:-140px;left:-100px;width:320px;height:320px;border-radius:50%;background:rgba(0,180,255,.14);filter:blur(60px);animation:ftFloat 16s ease-in-out infinite alternate-reverse}
+        @keyframes ftFloat{to{transform:translate(-30px,28px) scale(1.12)}}
+        .ft-title{position:relative;z-index:1;font-weight:900;letter-spacing:-.03em;line-height:1.05;font-size:clamp(2.1rem,6vw,4rem)}
+        .ft-title span{color:#00C2FF;text-shadow:0 0 30px rgba(0,194,255,.35)}
+        .ft-sub{position:relative;z-index:1;max-width:560px;margin:28px auto 0;padding:22px 30px;border-radius:22px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(6px);font-size:clamp(.95rem,2.2vw,1.1rem);line-height:1.7;color:#E2E8F0}
+        .ft-btns{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:36px}
+        .ft-btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:20px 40px;border-radius:16px;font-weight:700;font-size:1.1rem;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease,background .3s ease}
+        .ft-btn:hover{transform:translateY(-4px) scale(1.03)}
+        .ft-btn:active{transform:translateY(0) scale(.98)}
+        .ft-btn-mail{background:#264A8B;color:#fff;border:1px solid rgba(255,255,255,.12)}
+        .ft-btn-mail:hover{background:#2F5BAA;box-shadow:0 16px 30px -12px rgba(47,91,170,.8)}
+        .ft-arrow{display:inline-block;transition:transform .3s ease}
+        .ft-btn-mail:hover .ft-arrow{transform:translateX(5px)}
+        .ft-btn-wa{background:#00B4FF;color:#06223D;box-shadow:0 12px 28px -10px rgba(0,180,255,.7);animation:ftPulse 2.6s ease-in-out infinite}
+        .ft-btn-wa i{font-size:1.4rem}
+        .ft-btn-wa:hover{background:#2BC4FF;box-shadow:0 18px 36px -10px rgba(0,180,255,.95)}
+        @keyframes ftPulse{50%{box-shadow:0 12px 28px -10px rgba(0,180,255,.7),0 0 0 10px rgba(0,180,255,.12)}}
+        .ft-mail{position:relative;z-index:1;display:inline-block;margin-top:26px;font-size:.9rem;color:#9FB6D9;border-bottom:1px solid transparent;transition:color .25s,border-color .25s}
+        .ft-mail:hover{color:#fff;border-color:#fff}
+        .ft-reveal{opacity:0;transform:translateY(34px) scale(.98);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+        .ft-reveal.ft-in{opacity:1;transform:none}
+        @media(max-width:640px){.ft-card{padding:52px 18px 48px;border-radius:26px}.ft-btn{width:100%;padding:18px 24px}.ft-sub{padding:18px 20px}}
+        @media (prefers-reduced-motion:reduce){.ft-reveal{opacity:1;transform:none;transition:none}.ft-circle,.ft-orb,.ft-btn-wa{animation:none}}
+
+        /* Navbar */
+        html{scroll-behavior:smooth}
+        section[id],footer[id]{scroll-margin-top:84px}
+        .nv-header{position:sticky;top:0;z-index:50;background:rgba(246,247,252,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:box-shadow .3s,border-color .3s,background .3s;animation:nvDrop .7s cubic-bezier(.2,.8,.2,1) both}
+        .nv-header.nv-scrolled{border-color:#DCE1EA;box-shadow:0 10px 30px -18px rgba(15,23,42,.35);background:rgba(246,247,252,.94)}
+        @keyframes nvDrop{from{transform:translateY(-100%);opacity:0}to{transform:none;opacity:1}}
+        .nv-inner{max-width:72rem;margin:0 auto;padding:0 20px;height:76px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
+        .nv-logo{display:flex;flex-direction:column;line-height:1.1;text-decoration:none;justify-self:start}
+        .nv-name{font-size:1.45rem;font-weight:900;letter-spacing:-.04em;color:#0F172A}
+        .nv-name b{color:#00A8F0;transition:transform .3s;display:inline-block}
+        .nv-logo:hover .nv-name b{transform:translateY(-3px)}
+        .nv-role{font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#64748B;margin-top:2px}
+        .nv-links{display:flex;align-items:center;gap:6px}
+        .nv-links a{position:relative;padding:8px 14px;font-size:15px;font-weight:500;color:#475569;text-decoration:none;border-radius:10px;transition:color .25s}
+        .nv-links a::after{content:"";position:absolute;left:14px;right:14px;bottom:2px;height:2px;border-radius:2px;background:#1E3A6E;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+        .nv-links a:hover,.nv-links a.nv-active{color:#0F172A}
+        .nv-links a:hover::after,.nv-links a.nv-active::after{transform:scaleX(1)}
+        .nv-right{justify-self:end;display:flex;align-items:center;gap:10px}
+        .nv-cta{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;background:#1B3A6B;color:#fff;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 8px 20px -8px rgba(27,58,107,.7);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,background .3s}
+        .nv-cta:hover{background:#244A86;transform:translateY(-2px);box-shadow:0 14px 26px -10px rgba(27,58,107,.85)}
+        .nv-arrow{display:inline-block;transition:transform .3s}
+        .nv-cta:hover .nv-arrow{transform:translateX(5px)}
+        .nv-burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid #DCE1EA;background:#fff;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+        .nv-burger span{display:block;width:20px;height:2px;border-radius:2px;background:#0F172A;transition:transform .3s,opacity .3s}
+        .nv-open .nv-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+        .nv-open .nv-burger span:nth-child(2){opacity:0}
+        .nv-open .nv-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+        .nv-menu{display:none;flex-direction:column;gap:2px;padding:0 20px;max-height:0;overflow:hidden;transition:max-height .45s ease,padding .45s ease}
+        .nv-menu a{padding:14px 12px;border-radius:12px;font-weight:600;color:#334155;text-decoration:none;border-bottom:1px solid #E8ECF2}
+        .nv-menu a:hover{background:#EEF2F8}
+        .nv-menu .nv-menu-cta{border:0;margin-top:6px;font-size:14px;color:#1E3A6E;font-weight:700}
+        @media(max-width:860px){
+            .nv-inner{grid-template-columns:1fr auto;height:68px}
+            .nv-links{display:none}
+            .nv-burger{display:flex}
+            .nv-cta{padding:10px 16px;font-size:14px}
+            .nv-menu{display:flex}
+            .nv-open .nv-menu{max-height:420px;padding:6px 20px 18px}
+        }
+        @media(max-width:420px){.nv-role{display:none}.nv-cta{padding:9px 13px}}
+        @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nv-header{animation:none}}
     </style>
 </head>
-<body class="antialiased selection:bg-blue-100 selection:text-blue-900 relative">
+<body id="top" class="antialiased selection:bg-blue-100 selection:text-blue-900 relative">
 
     <!-- Interactive Particle Background Canvas -->
     <canvas id="bgCanvas"></canvas>
@@ -219,18 +354,34 @@
     <div class="relative z-10">
 
         <!-- HEADER / NAVBAR -->
-        <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-                <!-- Branding Only (No CTAs in Navbar) -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-blue-700 flex items-center justify-center font-bold text-white text-lg shadow-md group-hover:scale-105 transition-transform">
-                        OK
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="font-extrabold text-lg leading-tight text-slate-900 tracking-tight">Omar Khaled</span>
-                        <span class="text-xs text-blue-600 font-semibold tracking-wide">Performance Media Buyer</span>
-                    </div>
+        <header id="siteHeader" class="nv-header">
+            <div class="nv-inner">
+                <a href="#top" class="nv-logo" aria-label="Omar Khaled - home">
+                    <span class="nv-name">Omar Khaled<b>.</b></span>
+                    <span class="nv-role">Performance Media Buyer</span>
                 </a>
+
+                <nav class="nv-links" aria-label="Main">
+                    <a href="#results" data-spy="results">Work</a>
+                    <a href="#services" data-spy="services">Services</a>
+                    <a href="#platforms" data-spy="platforms">Platforms</a>
+                    <a href="#brands" data-spy="brands">Brands</a>
+                    <a href="#contact" data-spy="contact">Contact</a>
+                </nav>
+
+                <div class="nv-right">
+                    <a class="nv-cta" href="https://wa.me/201033177357" target="_blank" rel="noopener noreferrer">Hire Me <span class="nv-arrow">→</span></a>
+                    <button class="nv-burger" id="nvBurger" aria-label="Open menu" aria-expanded="false" aria-controls="nvMenu"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+
+            <div class="nv-menu" id="nvMenu">
+                <a href="#results">Work</a>
+                <a href="#services">Services</a>
+                <a href="#platforms">Platforms</a>
+                <a href="#brands">Brands</a>
+                <a href="#contact">Contact</a>
+                <a class="nv-menu-cta" href="mailto:omarrkhaled100@gmail.com?subject=Hiring%20Omar%20Khaled">omarrkhaled100@gmail.com</a>
             </div>
         </header>
 
@@ -313,166 +464,152 @@
         </section>
 
         <!-- VERIFIED RESULTS / ADS MANAGER DASHBOARD -->
-        <section id="results" class="py-16 bg-white/60 backdrop-blur-md border-t border-b border-slate-200/80 relative">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+        <section id="results" class="rs-section py-20 border-t border-b border-slate-300/70 relative overflow-hidden">
+            <div class="rs-glow rs-glow-1"></div><div class="rs-glow rs-glow-2"></div>
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+
+                <div class="rs-fade flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
                     <div>
-                        <div class="inline-flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">
-                            <i class="fa-brands fa-meta text-sm animate-bounce"></i> Meta Ads Manager Proof
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="block w-9 h-0.5 bg-blue-600 rounded"></span>
+                            <span class="text-xs font-bold text-blue-600 uppercase tracking-[0.3em]"><i class="fa-brands fa-meta mr-1"></i> Meta Ads Manager Proof</span>
                         </div>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Verified Client Campaign Results</h2>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">Verified Client<br class="hidden sm:inline"> Campaign Results</h2>
                     </div>
-                    <p class="text-xs text-slate-500 mt-2 md:mt-0 font-mono">
-                        <i class="fa-regular fa-calendar-check mr-1 text-blue-500"></i> Period: 1 Sep 2026 - 20 Oct 2026
-                    </p>
+                    <div class="rs-period"><i class="fa-regular fa-calendar-check text-blue-500"></i> 1 Sep 2026 – 20 Oct 2026</div>
                 </div>
 
-                <!-- Meta Ads Manager UI Component -->
-                <div class="glass-card border border-slate-300 rounded-2xl overflow-hidden meta-shadow hover:shadow-2xl transition-shadow duration-500">
-                    
-                    <!-- Ads Manager Toolbar Header -->
-                    <div class="bg-slate-100/90 px-4 py-3 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600">
-                        <div class="flex items-center gap-2 font-medium">
-                            <span class="px-2.5 py-1 bg-blue-600 text-white rounded font-bold text-[11px] shadow-sm"><i class="fa-solid fa-layer-group mr-1"></i> Campaigns</span>
-                            <span class="text-slate-400">|</span>
-                            <span class="font-semibold text-slate-800">Omar Khaled — E-Commerce Scaling Account</span>
+                <div class="rs-frame rs-fade" style="--d:120ms">
+                    <div class="rs-toolbar">
+                        <div class="flex items-center gap-3 flex-wrap">
+                            <span class="rs-dots"><i></i><i></i><i></i></span>
+                            <span class="rs-tab"><i class="fa-solid fa-layer-group mr-1"></i> Campaigns</span>
+                            <span class="font-semibold text-slate-800 text-xs sm:text-sm">Omar Khaled — E-Commerce Scaling Account</span>
                         </div>
                         <div class="flex items-center gap-3">
-                            <span class="px-2.5 py-1 bg-emerald-100/90 text-emerald-800 rounded-full font-bold text-[11px] flex items-center gap-1.5 border border-emerald-200">
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span> Active Campaigns
-                            </span>
+                            <span class="rs-live"><span class="rs-live-dot"></span> Active Campaigns</span>
                             <span class="hidden sm:inline text-slate-500 font-mono text-[11px]">Meta Account Status: Active</span>
                         </div>
                     </div>
 
-                    <!-- Aggregate Performance Metrics -->
-                    <div class="p-6 bg-slate-50/70 border-b border-slate-200 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-                        <div>
-                            <div class="text-[11px] font-semibold text-slate-500 uppercase">Amount Spent</div>
-                            <div class="text-lg font-bold text-slate-900 font-mono mt-0.5">36,604.85 <span class="text-xs font-normal text-slate-500">EGP</span></div>
+                    <div class="rs-kpis">
+                        <div class="rs-kpi" style="--i:0;--c:#3B82F6">
+                            <div class="rs-kpi-top"><span class="rs-ic"><i class="fa-solid fa-wallet"></i></span><span class="rs-lab">Amount Spent</span></div>
+                            <div class="rs-val"><span class="rs-count" data-to="36604.85" data-dec="2" data-suf="">36,604.85</span> <small>EGP</small></div>
                         </div>
-                        <div>
-                            <div class="text-[11px] font-semibold text-slate-500 uppercase">Purchases Value</div>
-                            <div class="text-lg font-bold text-emerald-600 font-mono mt-0.5">142,100.00 <span class="text-xs font-normal text-slate-500">EGP</span></div>
+                        <div class="rs-kpi" style="--i:1;--c:#10B981">
+                            <div class="rs-kpi-top"><span class="rs-ic"><i class="fa-solid fa-coins"></i></span><span class="rs-lab">Purchases Value</span></div>
+                            <div class="rs-val"><span class="rs-count" data-to="142100" data-dec="2" data-suf="">142,100.00</span> <small>EGP</small></div>
                         </div>
-                        <div>
-                            <div class="text-[11px] font-semibold text-slate-500 uppercase">Overall ROAS</div>
-                            <div class="text-lg font-extrabold text-blue-600 font-mono mt-0.5">3.88x</div>
+                        <div class="rs-kpi rs-kpi-hi" style="--i:2;--c:#6366F1">
+                            <div class="rs-kpi-top"><span class="rs-ic"><i class="fa-solid fa-arrow-trend-up"></i></span><span class="rs-lab">Overall ROAS</span></div>
+                            <div class="rs-val"><span class="rs-count" data-to="3.88" data-dec="2" data-suf="x">3.88x</span></div>
                         </div>
-                        <div>
-                            <div class="text-[11px] font-semibold text-slate-500 uppercase">Purchases</div>
-                            <div class="text-lg font-bold text-slate-900 font-mono mt-0.5">33 <span class="text-xs text-slate-400 font-normal">(35 Total)</span></div>
+                        <div class="rs-kpi" style="--i:3;--c:#F59E0B">
+                            <div class="rs-kpi-top"><span class="rs-ic"><i class="fa-solid fa-bag-shopping"></i></span><span class="rs-lab">Purchases</span></div>
+                            <div class="rs-val"><span class="rs-count" data-to="33" data-dec="0" data-suf="">33</span> <small>(35 Total)</small></div>
                         </div>
-                        <div>
-                            <div class="text-[11px] font-semibold text-slate-500 uppercase">Adds to Cart</div>
-                            <div class="text-lg font-bold text-slate-900 font-mono mt-0.5">274</div>
+                        <div class="rs-kpi" style="--i:4;--c:#EC4899">
+                            <div class="rs-kpi-top"><span class="rs-ic"><i class="fa-solid fa-cart-plus"></i></span><span class="rs-lab">Adds to Cart</span></div>
+                            <div class="rs-val"><span class="rs-count" data-to="274" data-dec="0" data-suf="">274</span></div>
                         </div>
-                        <div>
-                            <div class="text-[11px] font-semibold text-slate-500 uppercase">Reach</div>
-                            <div class="text-lg font-bold text-slate-900 font-mono mt-0.5">87,723</div>
+                        <div class="rs-kpi" style="--i:5;--c:#14B8A6">
+                            <div class="rs-kpi-top"><span class="rs-ic"><i class="fa-solid fa-users"></i></span><span class="rs-lab">Reach</span></div>
+                            <div class="rs-val"><span class="rs-count" data-to="87723" data-dec="0" data-suf="">87,723</span></div>
                         </div>
                     </div>
 
-                    <!-- Campaign Breakdown Table -->
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left ads-table">
+                        <table class="w-full text-left ads-table rs-table">
                             <thead>
                                 <tr>
-                                    <th>Campaign Name</th>
-                                    <th>Amount Spent (EGP)</th>
-                                    <th>Reach</th>
-                                    <th>Adds to Cart</th>
-                                    <th>Purchases</th>
-                                    <th>ROAS</th>
-                                    <th>Conversion Value</th>
+                                    <th>Campaign Name</th><th>Amount Spent (EGP)</th><th>Reach</th><th>Adds to Cart</th><th>Purchases</th><th>ROAS</th><th>Conversion Value</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-200">
-                                
-                                <!-- Campaign 1 -->
-                                <tr class="hover:bg-blue-50/40 transition-colors">
-                                    <td class="font-semibold text-slate-900">
-                                        <div class="flex items-center gap-2">
-                                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                                            <span>CBO | DPA | 19 Sep</span>
-                                        </div>
-                                    </td>
+                            <tbody>
+                                <tr class="rs-row" style="--i:0">
+                                    <td class="font-semibold text-slate-900"><div class="flex items-center gap-2 flex-wrap"><span class="rs-dot"></span><span>CBO | DPA | 19 Sep</span></div></td>
                                     <td class="font-mono text-slate-700">19,020.67</td>
                                     <td class="font-mono text-slate-600">45,561</td>
                                     <td class="font-mono text-slate-600">170</td>
                                     <td class="font-mono font-bold text-slate-900">20</td>
-                                    <td>
-                                        <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold font-mono text-xs shadow-sm">4.99x</span>
-                                    </td>
+                                    <td><div class="flex items-center gap-3"><span class="rs-pill rs-pill-emerald">4.99x</span><span class="rs-meter"><i style="--w:83.2%"></i></span></div></td>
                                     <td class="font-mono font-extrabold text-emerald-600">94,850.00 EGP</td>
                                 </tr>
-
-                                <!-- Campaign 2 -->
-                                <tr class="hover:bg-blue-50/40 transition-colors bg-blue-50/20">
-                                    <td class="font-semibold text-slate-900">
-                                        <div class="flex items-center gap-2">
-                                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                                            <span>CBO | DPA - Bid Cap | 1...</span>
-                                        </div>
-                                    </td>
+                                <tr class="rs-row" style="--i:1">
+                                    <td class="font-semibold text-slate-900"><div class="flex items-center gap-2 flex-wrap"><span class="rs-dot"></span><span>CBO | DPA - Bid Cap | 1...</span> <span class="rs-top"><i class="fa-solid fa-trophy"></i> Top ROAS</span></div></td>
                                     <td class="font-mono text-slate-700">3,062.86</td>
                                     <td class="font-mono text-slate-600">7,280</td>
                                     <td class="font-mono text-slate-600">32</td>
                                     <td class="font-mono font-bold text-slate-900">6</td>
-                                    <td>
-                                        <span class="px-2.5 py-1 bg-indigo-100 text-indigo-800 rounded font-bold font-mono text-xs shadow-sm">5.70x</span>
-                                    </td>
+                                    <td><div class="flex items-center gap-3"><span class="rs-pill rs-pill-indigo">5.70x</span><span class="rs-meter"><i style="--w:95.0%"></i></span></div></td>
                                     <td class="font-mono font-extrabold text-emerald-600">17,450.00 EGP</td>
                                 </tr>
-
-                                <!-- Campaign 3 -->
-                                <tr class="hover:bg-blue-50/40 transition-colors">
-                                    <td class="font-semibold text-slate-900">
-                                        <div class="flex items-center gap-2">
-                                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                                            <span>CBO 14/Oct Bundles</span>
-                                        </div>
-                                    </td>
+                                <tr class="rs-row" style="--i:2">
+                                    <td class="font-semibold text-slate-900"><div class="flex items-center gap-2 flex-wrap"><span class="rs-dot"></span><span>CBO 14/Oct Bundles</span></div></td>
                                     <td class="font-mono text-slate-700">9,479.48</td>
                                     <td class="font-mono text-slate-600">26,067</td>
                                     <td class="font-mono text-slate-600">51</td>
                                     <td class="font-mono font-bold text-slate-900">6</td>
-                                    <td>
-                                        <span class="px-2.5 py-1 bg-blue-100 text-blue-800 rounded font-bold font-mono text-xs">2.75x</span>
-                                    </td>
+                                    <td><div class="flex items-center gap-3"><span class="rs-pill rs-pill-blue">2.75x</span><span class="rs-meter"><i style="--w:45.8%"></i></span></div></td>
                                     <td class="font-mono font-extrabold text-slate-900">26,050.00 EGP</td>
                                 </tr>
-
-                                <!-- Campaign 4 -->
-                                <tr class="hover:bg-blue-50/40 transition-colors">
-                                    <td class="font-semibold text-slate-900">
-                                        <div class="flex items-center gap-2">
-                                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                                            <span>CBO | DPA | 6 oct Ahm...</span>
-                                        </div>
-                                    </td>
+                                <tr class="rs-row" style="--i:3">
+                                    <td class="font-semibold text-slate-900"><div class="flex items-center gap-2 flex-wrap"><span class="rs-dot"></span><span>CBO | DPA | 6 oct Ahm...</span></div></td>
                                     <td class="font-mono text-slate-700">5,022.42</td>
                                     <td class="font-mono text-slate-600">26,306</td>
                                     <td class="font-mono text-slate-600">21</td>
                                     <td class="font-mono font-bold text-slate-900">3</td>
-                                    <td>
-                                        <span class="px-2.5 py-1 bg-slate-200 text-slate-700 rounded font-bold font-mono text-xs">0.75x</span>
-                                    </td>
+                                    <td><div class="flex items-center gap-3"><span class="rs-pill rs-pill-slate">0.75x</span><span class="rs-meter"><i style="--w:12.5%"></i></span></div></td>
                                     <td class="font-mono font-extrabold text-slate-900">3,750.00 EGP</td>
                                 </tr>
-
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="px-6 py-3 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+                    <div class="rs-chart">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                            <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wider">Spend vs Revenue by Campaign</h3>
+                            <div class="flex items-center gap-4 text-xs text-slate-500 font-medium">
+                                <span class="flex items-center gap-1.5"><i class="rs-key rs-bar-spend"></i> Amount spent</span>
+                                <span class="flex items-center gap-1.5"><i class="rs-key rs-bar-rev"></i> Conversion value</span>
+                            </div>
+                        </div>
+                        <div class="rs-crow" style="--i:0">
+                            <div class="rs-cname">CBO | DPA | 19 Sep<span class="rs-croas rs-pill-emerald">4.99x</span></div>
+                            <div class="rs-bars">
+                                <div class="rs-track"><i class="rs-bar rs-bar-spend" style="--w:20.05%"></i><span>19,021 spent</span></div>
+                                <div class="rs-track"><i class="rs-bar rs-bar-rev" style="--w:100.00%"></i><span>94,850 revenue</span></div>
+                            </div>
+                        </div>
+                        <div class="rs-crow" style="--i:1">
+                            <div class="rs-cname">CBO | DPA - Bid Cap | 1...<span class="rs-croas rs-pill-indigo">5.70x</span></div>
+                            <div class="rs-bars">
+                                <div class="rs-track"><i class="rs-bar rs-bar-spend" style="--w:3.23%"></i><span>3,063 spent</span></div>
+                                <div class="rs-track"><i class="rs-bar rs-bar-rev" style="--w:18.40%"></i><span>17,450 revenue</span></div>
+                            </div>
+                        </div>
+                        <div class="rs-crow" style="--i:2">
+                            <div class="rs-cname">CBO 14/Oct Bundles<span class="rs-croas rs-pill-blue">2.75x</span></div>
+                            <div class="rs-bars">
+                                <div class="rs-track"><i class="rs-bar rs-bar-spend" style="--w:9.99%"></i><span>9,479 spent</span></div>
+                                <div class="rs-track"><i class="rs-bar rs-bar-rev" style="--w:27.46%"></i><span>26,050 revenue</span></div>
+                            </div>
+                        </div>
+                        <div class="rs-crow" style="--i:3">
+                            <div class="rs-cname">CBO | DPA | 6 oct Ahm...<span class="rs-croas rs-pill-slate">0.75x</span></div>
+                            <div class="rs-bars">
+                                <div class="rs-track"><i class="rs-bar rs-bar-spend" style="--w:5.30%"></i><span>5,022 spent</span></div>
+                                <div class="rs-track"><i class="rs-bar rs-bar-rev" style="--w:3.95%"></i><span>3,750 revenue</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rs-foot">
                         <span>Showing top scaling campaign benchmarks</span>
                         <span class="font-semibold text-slate-700"><i class="fa-solid fa-shield-halved text-emerald-500 mr-1"></i> Actual Ads Manager Verified Report</span>
                     </div>
-
                 </div>
-
             </div>
         </section>
 
@@ -496,7 +633,7 @@
         </section>
 
         <!-- PLATFORMS HANDLED SECTION -->
-        <section class="py-16">
+        <section id="platforms" class="py-16">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-2xl mx-auto mb-12">
                     <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Cross-Platform Media Buying</span>
@@ -579,7 +716,7 @@
         </section>
 
         <!-- CORE MEDIA BUYING SERVICES -->
-        <section class="py-16 bg-white/50 backdrop-blur-md border-t border-b border-slate-200/80">
+        <section id="capabilities" class="py-16 bg-white/50 backdrop-blur-md border-t border-b border-slate-200/80">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <div class="text-center max-w-2xl mx-auto mb-12">
@@ -639,50 +776,27 @@
         </section>
 
         <!-- WHATSAPP CONTACT BANNER -->
-        <section class="py-16">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white rounded-3xl p-8 sm:p-12 text-center shadow-2xl relative overflow-hidden group">
-                    
-                    <div class="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/20 rounded-full blur-3xl group-hover:bg-emerald-500/30 transition-colors"></div>
-                    <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl group-hover:bg-blue-500/30 transition-colors"></div>
-
-                    <h2 class="text-2xl sm:text-4xl font-extrabold mb-3 relative z-10">Ready to Scale Your Store's ROAS?</h2>
-                    <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed relative z-10">
-                        Let's analyze your current account structure and build a customized media buying scaling plan. Click below to connect with me directly on WhatsApp.
-                    </p>
-
-                    <a href="https://wa.me/201033177357?text=Hello%20Omar,%20I%20am%20interested%20in%20scaling%20my%20ad%20campaigns%20with%20you." 
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="inline-flex items-center gap-3 px-8 py-4 bg-brand-whatsapp hover:bg-brand-whatsappDark text-white font-bold text-lg rounded-2xl shadow-lg glow-wa transition-all transform hover:scale-105 relative z-10">
-                        <i class="fa-brands fa-whatsapp text-2xl"></i>
-                        <span>Chat on WhatsApp</span>
-                    </a>
-
-                </div>
-            </div>
-        </section>
-
         <!-- FOOTER -->
-        <footer class="py-8 bg-slate-100/80 backdrop-blur-md border-t border-slate-200">
-            <div class="max-w-6xl mx-auto px-4 text-center text-xs text-slate-500">
-                <p>© 2026 Omar Khaled — Performance Media Buyer. All campaign data verified from Meta Ads Manager dashboard reports.</p>
+        <footer id="contact" class="pt-8 pb-8 border-t border-slate-300/70">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="ft-card ft-reveal">
+                    <div class="ft-circle"></div>
+                    <div class="ft-orb"></div>
+                    <h2 class="ft-title">Ready to Scale<br><span>Your Store's ROAS?</span></h2>
+                    <p class="ft-sub">Let's build campaigns that generate real revenue — not just impressions. One conversation changes everything.</p>
+                    <div class="ft-btns">
+                        <a class="ft-btn ft-btn-mail" href="mailto:omarrkhaled100@gmail.com?subject=Scaling%20my%20store%27s%20ROAS">Send an Email <span class="ft-arrow">→</span></a>
+                        <a class="ft-btn ft-btn-wa" href="https://wa.me/201033177357" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                    <a class="ft-mail" href="mailto:omarrkhaled100@gmail.com">omarrkhaled100@gmail.com</a>
+                </div>
+
+                <p class="text-center text-xs text-slate-500 mt-8">© 2026 Omar Khaled — Performance Media Buyer. All campaign data verified from Meta Ads Manager dashboard reports.</p>
             </div>
         </footer>
 
-        <!-- FLOATING WHATSAPP BUTTON -->
-        <div class="fixed bottom-6 right-6 z-50">
-            <a href="https://wa.me/201033177357?text=Hi%20Omar,%20I%20want%20to%20discuss%20scaling%20my%20ad%20campaigns." 
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="Chat on WhatsApp"
-               class="group flex items-center gap-3 px-4 py-3 bg-brand-whatsapp hover:bg-brand-whatsappDark text-white font-bold text-sm rounded-full shadow-2xl glow-wa transition-all transform hover:scale-110 active:scale-95">
-                <i class="fa-brands fa-whatsapp text-2xl"></i>
-                <span class="hidden sm:inline">Chat on WhatsApp</span>
-            </a>
-        </div>
-
-    </div>
+            </div>
 
     <!-- BACKGROUND ANIMATED PARTICLE CANVAS SCRIPT -->
     <script>
@@ -756,6 +870,61 @@
             if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
             var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.15});
             els.forEach(function(e,i){e.style.transitionDelay=(i%4)*80+'ms';io.observe(e)});
+        })();
+    </script>
+
+    <script>
+        // Verified results: reveal + count-up
+        (function(){
+            var sec=document.getElementById('results');if(!sec)return;
+            var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var counts=sec.querySelectorAll('.rs-count');
+            function fmt(v,d){return v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});}
+            function run(){
+                counts.forEach(function(el,i){
+                    var to=parseFloat(el.dataset.to),d=parseInt(el.dataset.dec,10),s=el.dataset.suf||'';
+                    var dur=1700,delay=300+i*90,t0=null;
+                    function step(ts){
+                        if(t0===null)t0=ts+delay;
+                        var p=Math.min(Math.max((ts-t0)/dur,0),1),e=1-Math.pow(1-p,4);
+                        el.textContent=fmt(to*e,d)+s;
+                        if(p<1)requestAnimationFrame(step);else el.textContent=fmt(to,d)+s;
+                    }
+                    requestAnimationFrame(step);
+                });
+            }
+            if(reduce||!('IntersectionObserver' in window)){sec.classList.add('rs-on');return;}
+            counts.forEach(function(el){el.textContent=fmt(0,parseInt(el.dataset.dec,10))+(el.dataset.suf||'');});
+            var io=new IntersectionObserver(function(es){
+                if(es[0].isIntersecting){sec.classList.add('rs-on');run();io.disconnect();}
+            },{threshold:.18});
+            io.observe(sec);
+        })();
+    </script>
+
+    <script>
+        (function(){
+            var el=document.querySelector('.ft-reveal');if(!el)return;
+            if(!('IntersectionObserver' in window)){el.classList.add('ft-in');return;}
+            var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){el.classList.add('ft-in');io.disconnect();}},{threshold:.2});
+            io.observe(el);
+        })();
+    </script>
+
+    <script>
+        // Navbar: shadow on scroll, mobile menu, active link
+        (function(){
+            var h=document.getElementById('siteHeader'),btn=document.getElementById('nvBurger');if(!h)return;
+            function sc(){h.classList.toggle('nv-scrolled',window.scrollY>8);}
+            sc();window.addEventListener('scroll',sc,{passive:true});
+            btn.addEventListener('click',function(){var o=h.classList.toggle('nv-open');btn.setAttribute('aria-expanded',o);});
+            document.querySelectorAll('#nvMenu a').forEach(function(a){a.addEventListener('click',function(){h.classList.remove('nv-open');btn.setAttribute('aria-expanded','false');});});
+            if(!('IntersectionObserver' in window))return;
+            var links={};document.querySelectorAll('.nv-links a').forEach(function(a){links[a.dataset.spy]=a;});
+            var io=new IntersectionObserver(function(es){es.forEach(function(e){
+                if(e.isIntersecting){Object.keys(links).forEach(function(k){links[k].classList.remove('nv-active');});var l=links[e.target.id];if(l)l.classList.add('nv-active');}
+            });},{rootMargin:'-35% 0px -55% 0px'});
+            Object.keys(links).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el);});
         })();
     </script>
 </body>
