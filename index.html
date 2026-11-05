@@ -431,6 +431,62 @@
         .hero-grid .hq-sub{font-size:.95rem;max-width:520px}
         .hero-grid .avatar-ring{width:96px;height:96px}
         @media(max-width:640px){.hero-grid .hb{padding:14px 22px}}
+
+        /* Hero visual */
+        .hv{display:none;position:absolute;right:24px;top:4px;width:440px;height:520px;pointer-events:none;z-index:0}
+        @media(min-width:1200px){.hv{display:block}.hero-grid h1{max-width:640px}}
+        .hv-ring{position:absolute;left:50%;top:50%;border-radius:50%;border:1.5px dashed rgba(30,58,110,.22);transform:translate(-50%,-50%)}
+        .hv-ring1{width:410px;height:410px;animation:hvSpin 40s linear infinite}
+        .hv-ring2{width:300px;height:300px;border-color:rgba(0,180,255,.28);animation:hvSpin 28s linear infinite reverse}
+        @keyframes hvSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+        .hv-orbit{position:absolute;left:50%;top:50%;width:0;height:0;animation:hvOrbit 26s linear infinite}
+        @keyframes hvOrbit{to{transform:rotate(360deg)}}
+        .hv-slot{position:absolute;left:0;top:0;transform:rotate(var(--a)) translateX(205px)}
+        .hv-ico{position:absolute;left:-24px;top:-24px;width:48px;height:48px;border-radius:15px;background:#fff;border:1px solid #E2E8F0;box-shadow:0 10px 22px -8px rgba(15,23,42,.3);display:flex;align-items:center;justify-content:center;font-size:21px;animation:hvUp 26s linear infinite;--r:calc(var(--a) * -1)}
+        .hv-slot:nth-child(odd) .hv-ico{animation-delay:0s}
+        @keyframes hvUp{from{transform:rotate(var(--r))}to{transform:rotate(calc(var(--r) - 360deg))}}
+        .hv-card{position:absolute;left:50%;top:50%;width:300px;transform:translate(-50%,-50%);background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border:1px solid #DCE2EC;border-radius:22px;padding:18px 18px 16px;box-shadow:0 30px 50px -24px rgba(15,23,42,.45);animation:hvFloat 6s ease-in-out infinite}
+        @keyframes hvFloat{50%{transform:translate(-50%,calc(-50% - 10px))}}
+        .hv-top{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#64748B;margin-bottom:10px}
+        .hv-live{width:8px;height:8px;border-radius:50%;background:#10B981;animation:hvPulse 1.8s infinite}
+        @keyframes hvPulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.55)}70%{box-shadow:0 0 0 9px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+        .hv-chart{width:100%;height:130px;display:block;overflow:visible}
+        .hv-line{stroke-dasharray:100;stroke-dashoffset:100;animation:hvDraw 6s ease-in-out infinite;filter:drop-shadow(0 4px 6px rgba(16,185,129,.35))}
+        @keyframes hvDraw{0%{stroke-dashoffset:100;opacity:1}42%{stroke-dashoffset:0;opacity:1}88%{stroke-dashoffset:0;opacity:1}96%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:100;opacity:0}}
+        .hv-area{opacity:0;animation:hvArea 6s ease-in-out infinite}
+        @keyframes hvArea{0%,30%{opacity:0}48%,88%{opacity:1}96%,100%{opacity:0}}
+        .hv-dot,.hv-dot-pulse{opacity:0;animation:hvDot 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+        .hv-dot-pulse{animation-name:hvDotPulse}
+        @keyframes hvDot{0%,38%{opacity:0}46%,88%{opacity:1}96%,100%{opacity:0}}
+        @keyframes hvDotPulse{0%,40%{opacity:0;transform:scale(1)}46%{opacity:.5;transform:scale(1)}70%{opacity:0;transform:scale(3)}100%{opacity:0;transform:scale(3)}}
+        .hv-bars{display:flex;align-items:flex-end;gap:6px;height:34px;margin:6px 0 12px}
+        .hv-bars i{flex:1;border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,#34D399,#10B981);transform-origin:bottom;animation:hvBar 2.6s ease-in-out infinite alternate}
+        .hv-bars i:nth-child(1){height:30%;animation-delay:0s}.hv-bars i:nth-child(2){height:42%;animation-delay:.15s}.hv-bars i:nth-child(3){height:38%;animation-delay:.3s}.hv-bars i:nth-child(4){height:58%;animation-delay:.45s}.hv-bars i:nth-child(5){height:70%;animation-delay:.6s}.hv-bars i:nth-child(6){height:84%;animation-delay:.75s}.hv-bars i:nth-child(7){height:100%;animation-delay:.9s}
+        @keyframes hvBar{from{transform:scaleY(.55)}to{transform:scaleY(1)}}
+        .hv-foot{display:flex;align-items:baseline;justify-content:space-between;padding-top:10px;border-top:1px dashed #E2E8F0}
+        .hv-foot span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#64748B}
+        .hv-foot b{font-family:ui-monospace,monospace;font-size:1.7rem;font-weight:800;background:linear-gradient(90deg,#1D4ED8,#00B4FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+        .hv-chip{position:absolute;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:16px;background:#fff;border:1px solid #E2E8F0;box-shadow:0 16px 30px -14px rgba(15,23,42,.4);white-space:nowrap}
+        .hv-chip small{display:block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#64748B;line-height:1.2}
+        .hv-chip b{font-size:15px;font-weight:800;color:#0F172A;font-family:ui-monospace,monospace}
+        .hv-chip-ic{width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:14px}
+        .hv-chip1{left:-18px;top:62px;animation:hvBob 5s ease-in-out infinite}
+        .hv-chip2{right:-14px;bottom:70px;animation:hvBob 6s ease-in-out -2s infinite}
+        .hv-chip3{left:20px;bottom:36px;animation:hvBob 5.5s ease-in-out -1s infinite}
+        .hv-chip3 b{font-family:'Inter',sans-serif;font-size:13px}
+        .hv-ping{width:9px;height:9px;border-radius:50%;background:#00B4FF;animation:hvPulse2 1.6s infinite}
+        @keyframes hvPulse2{0%{box-shadow:0 0 0 0 rgba(0,180,255,.6)}70%{box-shadow:0 0 0 9px rgba(0,180,255,0)}100%{box-shadow:0 0 0 0 rgba(0,180,255,0)}}
+        @keyframes hvBob{50%{transform:translateY(-12px)}}
+        @media (prefers-reduced-motion:reduce){.hv *{animation:none!important}.hv-line{stroke-dashoffset:0}.hv-area,.hv-dot{opacity:1}}
+
+        /* Hero visual - smaller */
+        .hv{transform:scale(.7);transform-origin:top right;top:24px;right:16px}
+
+        /* Hero visual - moved down */
+        .hv{top:96px}
+
+        /* KPI row: 5 cards */
+        @media(min-width:1024px){.rs-kpis{grid-template-columns:repeat(5,1fr)!important}}
     </style>
 </head>
 <body id="top" class="antialiased selection:bg-blue-100 selection:text-blue-900 relative">
@@ -482,6 +538,42 @@
         <section class="hero-grid pt-12 pb-16 md:pt-20 md:pb-24 relative">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
                 
+                <!-- Hero visual (desktop) -->
+                <div class="hv" aria-hidden="true">
+                    <div class="hv-ring hv-ring1"></div>
+                    <div class="hv-ring hv-ring2"></div>
+                    <div class="hv-orbit">
+                        <span class="hv-slot" style="--a:0deg"><span class="hv-ico"><i class="fa-brands fa-meta" style="color:#1877F2"></i></span></span>
+                        <span class="hv-slot" style="--a:90deg"><span class="hv-ico"><i class="fa-brands fa-tiktok" style="color:#0F172A"></i></span></span>
+                        <span class="hv-slot" style="--a:180deg"><span class="hv-ico"><i class="fa-brands fa-google" style="color:#EA4335"></i></span></span>
+                        <span class="hv-slot" style="--a:270deg"><span class="hv-ico"><i class="fa-solid fa-bag-shopping" style="color:#10B981"></i></span></span>
+                    </div>
+
+                    <div class="hv-card">
+                        <div class="hv-top"><span class="hv-live"></span> Ad spend → Revenue</div>
+                        <svg class="hv-chart" viewBox="0 0 280 130" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="hvArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#10B981" stop-opacity=".35"/><stop offset="1" stop-color="#10B981" stop-opacity="0"/></linearGradient>
+                            </defs>
+                            <g stroke="#E2E8F0" stroke-width="1"><line x1="0" y1="32" x2="280" y2="32"/><line x1="0" y1="64" x2="280" y2="64"/><line x1="0" y1="96" x2="280" y2="96"/></g>
+                            <path class="hv-spend" d="M0 108 C40 106 80 104 120 102 S200 98 280 96" fill="none" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="3 6"/>
+                            <path class="hv-area" d="M0 112 C30 108 55 96 85 84 S130 70 160 52 S230 26 268 14 L268 130 L0 130 Z" fill="url(#hvArea)"/>
+                            <path class="hv-line" d="M0 112 C30 108 55 96 85 84 S130 70 160 52 S230 26 268 14" fill="none" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" pathLength="100"/>
+                            <circle class="hv-dot-pulse" cx="268" cy="14" r="6" fill="#10B981"/>
+                            <circle class="hv-dot" cx="268" cy="14" r="5" fill="#fff" stroke="#10B981" stroke-width="3"/>
+                        </svg>
+                        <div class="hv-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                        <div class="hv-foot">
+                            <span>Top campaign ROAS</span>
+                            <b id="hvRoas">5.70x</b>
+                        </div>
+                    </div>
+
+                    <div class="hv-chip hv-chip1"><span class="hv-chip-ic" style="background:#FEF3C7;color:#B45309"><i class="fa-solid fa-trophy"></i></span><div><small>Top ROAS</small><b>5.70x</b></div></div>
+                    <div class="hv-chip hv-chip2"><span class="hv-chip-ic" style="background:#D1FAE5;color:#047857"><i class="fa-solid fa-arrow-trend-up"></i></span><div><small>Conversion value</small><b>94,850 EGP</b></div></div>
+                    <div class="hv-chip hv-chip3"><span class="hv-ping"></span><b>New purchase</b><span>🛍️</span></div>
+                </div>
+
                 <!-- Profile row -->
                 <div class="hero-in flex flex-wrap items-center gap-4 sm:gap-6 mb-6" style="--d:0ms">
                     <div class="avatar-ring">
@@ -556,10 +648,6 @@
                         <div class="rs-kpi" style="--i:1;--c:#10B981">
                             <div class="rs-kpi-top"><span class="rs-ic"><i class="fa-solid fa-coins"></i></span><span class="rs-lab">Purchases Value</span></div>
                             <div class="rs-val"><span class="rs-count" data-to="142100" data-dec="2" data-suf="">142,100.00</span> <small>EGP</small></div>
-                        </div>
-                        <div class="rs-kpi rs-kpi-hi" style="--i:2;--c:#6366F1">
-                            <div class="rs-kpi-top"><span class="rs-ic"><i class="fa-solid fa-arrow-trend-up"></i></span><span class="rs-lab">Overall ROAS</span></div>
-                            <div class="rs-val"><span class="rs-count" data-to="3.88" data-dec="2" data-suf="x">3.88x</span></div>
                         </div>
                         <div class="rs-kpi" style="--i:3;--c:#F59E0B">
                             <div class="rs-kpi-top"><span class="rs-ic"><i class="fa-solid fa-bag-shopping"></i></span><span class="rs-lab">Purchases</span></div>
@@ -640,8 +728,8 @@
             </div>
             <div class="reveal svc-marquee mt-10" aria-label="Services">
                 <div class="svc-track">
-                    <div class="svc-group"><article class="svc-card"><div class="svc-head svc-blue"><span class="svc-icon">📊</span><h3 class="svc-title">Paid Media Management</h3></div><div class="svc-body"><p>End-to-end campaign management. TOF/MOF/BOF architecture, daily budget shifts, kill rules, and ROAS scaling with data-backed decisions.</p><div class="svc-tags"><span class="svc-pill">Meta</span><span class="svc-pill">TikTok</span><span class="svc-pill">Snapchat</span><span class="svc-pill">Google</span></div></div></article><article class="svc-card"><div class="svc-head svc-green"><span class="svc-icon">🎯</span><h3 class="svc-title">Lead Generation (High Ticket)</h3></div><div class="svc-body"><p>Qualified lead strategies for clinics, education, and services. Website-redirect funnels, audience segmentation, and CPL optimization.</p><div class="svc-tags"><span class="svc-pill">Beauty Clinics</span><span class="svc-pill">Aviation</span><span class="svc-pill">High Ticket</span></div></div></article><article class="svc-card"><div class="svc-head svc-navy"><span class="svc-icon">🛍️</span><h3 class="svc-title">E-Commerce Scaling</h3></div><div class="svc-body"><p>Fashion, fragrance, beauty, and accessories brands scaled profitably. Proven across Egypt, KSA, Kuwait, and UAE.</p><div class="svc-tags"><span class="svc-pill">Egypt</span><span class="svc-pill">KSA</span><span class="svc-pill">Kuwait</span><span class="svc-pill">UAE</span></div></div></article><article class="svc-card"><div class="svc-head svc-purple"><span class="svc-icon">📱</span><h3 class="svc-title">Mobile App Growth</h3></div><div class="svc-body"><p>App install campaigns with event optimization via Firebase, focused on lowering CPI while sustaining high-volume monthly installs.</p><div class="svc-tags"><span class="svc-pill">App Installs</span><span class="svc-pill">Event Optimization</span><span class="svc-pill">Firebase</span></div></div></article><article class="svc-card"><div class="svc-head svc-brown"><span class="svc-icon">📋</span><h3 class="svc-title">Media Strategy &amp; Planning</h3></div><div class="svc-body"><p>Full campaign briefs, audience mapping, budget allocation in EGP/SAR/USD, creative frameworks, and KPI targets per funnel stage.</p><div class="svc-tags"><span class="svc-pill">Full Funnel</span><span class="svc-pill">Creative Briefs</span><span class="svc-pill">Budget Planning</span></div></div></article><article class="svc-card"><div class="svc-head svc-teal"><span class="svc-icon">📈</span><h3 class="svc-title">Performance Reporting</h3></div><div class="svc-body"><p>Monthly client reports with real insights — what worked, what didn't, and the exact roadmap for the next sprint. Arabic &amp; English.</p><div class="svc-tags"><span class="svc-pill">Arabic</span><span class="svc-pill">English</span><span class="svc-pill">Dashboards</span></div></div></article></div>
-                    <div class="svc-group" aria-hidden="true"><article class="svc-card" aria-hidden="true"><div class="svc-head svc-blue"><span class="svc-icon">📊</span><h3 class="svc-title">Paid Media Management</h3></div><div class="svc-body"><p>End-to-end campaign management. TOF/MOF/BOF architecture, daily budget shifts, kill rules, and ROAS scaling with data-backed decisions.</p><div class="svc-tags"><span class="svc-pill">Meta</span><span class="svc-pill">TikTok</span><span class="svc-pill">Snapchat</span><span class="svc-pill">Google</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-green"><span class="svc-icon">🎯</span><h3 class="svc-title">Lead Generation (High Ticket)</h3></div><div class="svc-body"><p>Qualified lead strategies for clinics, education, and services. Website-redirect funnels, audience segmentation, and CPL optimization.</p><div class="svc-tags"><span class="svc-pill">Beauty Clinics</span><span class="svc-pill">Aviation</span><span class="svc-pill">High Ticket</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-navy"><span class="svc-icon">🛍️</span><h3 class="svc-title">E-Commerce Scaling</h3></div><div class="svc-body"><p>Fashion, fragrance, beauty, and accessories brands scaled profitably. Proven across Egypt, KSA, Kuwait, and UAE.</p><div class="svc-tags"><span class="svc-pill">Egypt</span><span class="svc-pill">KSA</span><span class="svc-pill">Kuwait</span><span class="svc-pill">UAE</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-purple"><span class="svc-icon">📱</span><h3 class="svc-title">Mobile App Growth</h3></div><div class="svc-body"><p>App install campaigns with event optimization via Firebase, focused on lowering CPI while sustaining high-volume monthly installs.</p><div class="svc-tags"><span class="svc-pill">App Installs</span><span class="svc-pill">Event Optimization</span><span class="svc-pill">Firebase</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-brown"><span class="svc-icon">📋</span><h3 class="svc-title">Media Strategy &amp; Planning</h3></div><div class="svc-body"><p>Full campaign briefs, audience mapping, budget allocation in EGP/SAR/USD, creative frameworks, and KPI targets per funnel stage.</p><div class="svc-tags"><span class="svc-pill">Full Funnel</span><span class="svc-pill">Creative Briefs</span><span class="svc-pill">Budget Planning</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-teal"><span class="svc-icon">📈</span><h3 class="svc-title">Performance Reporting</h3></div><div class="svc-body"><p>Monthly client reports with real insights — what worked, what didn't, and the exact roadmap for the next sprint. Arabic &amp; English.</p><div class="svc-tags"><span class="svc-pill">Arabic</span><span class="svc-pill">English</span><span class="svc-pill">Dashboards</span></div></div></article></div>
+                    <div class="svc-group"><article class="svc-card"><div class="svc-head svc-blue"><span class="svc-icon">📊</span><h3 class="svc-title">Paid Media Management</h3></div><div class="svc-body"><p>End-to-end campaign management. TOF/MOF/BOF architecture, daily budget shifts, kill rules, and ROAS scaling with data-backed decisions.</p><div class="svc-tags"><span class="svc-pill">Meta</span><span class="svc-pill">TikTok</span><span class="svc-pill">Snapchat</span><span class="svc-pill">Google</span></div></div></article><article class="svc-card"><div class="svc-head svc-green"><span class="svc-icon">🎯</span><h3 class="svc-title">Lead Generation (High Ticket)</h3></div><div class="svc-body"><p>Qualified lead strategies for clinics, education, and services. Website-redirect funnels, audience segmentation, and CPL optimization.</p><div class="svc-tags"><span class="svc-pill">Beauty Clinics</span><span class="svc-pill">Aviation</span><span class="svc-pill">High Ticket</span></div></div></article><article class="svc-card"><div class="svc-head svc-navy"><span class="svc-icon">🛍️</span><h3 class="svc-title">E-Commerce Scaling</h3></div><div class="svc-body"><p>Fashion, fragrance, beauty, and accessories brands scaled profitably. Proven in the Egyptian market.</p><div class="svc-tags"><span class="svc-pill">Egypt</span></div></div></article><article class="svc-card"><div class="svc-head svc-purple"><span class="svc-icon">📱</span><h3 class="svc-title">Mobile App Growth</h3></div><div class="svc-body"><p>App install campaigns with event optimization via Firebase, focused on lowering CPI while sustaining high-volume monthly installs.</p><div class="svc-tags"><span class="svc-pill">App Installs</span><span class="svc-pill">Event Optimization</span><span class="svc-pill">Firebase</span></div></div></article><article class="svc-card"><div class="svc-head svc-brown"><span class="svc-icon">📋</span><h3 class="svc-title">Media Strategy &amp; Planning</h3></div><div class="svc-body"><p>Full campaign briefs, audience mapping, budget allocation in EGP/SAR/USD, creative frameworks, and KPI targets per funnel stage.</p><div class="svc-tags"><span class="svc-pill">Full Funnel</span><span class="svc-pill">Creative Briefs</span><span class="svc-pill">Budget Planning</span></div></div></article><article class="svc-card"><div class="svc-head svc-teal"><span class="svc-icon">📈</span><h3 class="svc-title">Performance Reporting</h3></div><div class="svc-body"><p>Monthly client reports with real insights — what worked, what didn't, and the exact roadmap for the next sprint. Arabic &amp; English.</p><div class="svc-tags"><span class="svc-pill">Arabic</span><span class="svc-pill">English</span><span class="svc-pill">Dashboards</span></div></div></article></div>
+                    <div class="svc-group" aria-hidden="true"><article class="svc-card" aria-hidden="true"><div class="svc-head svc-blue"><span class="svc-icon">📊</span><h3 class="svc-title">Paid Media Management</h3></div><div class="svc-body"><p>End-to-end campaign management. TOF/MOF/BOF architecture, daily budget shifts, kill rules, and ROAS scaling with data-backed decisions.</p><div class="svc-tags"><span class="svc-pill">Meta</span><span class="svc-pill">TikTok</span><span class="svc-pill">Snapchat</span><span class="svc-pill">Google</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-green"><span class="svc-icon">🎯</span><h3 class="svc-title">Lead Generation (High Ticket)</h3></div><div class="svc-body"><p>Qualified lead strategies for clinics, education, and services. Website-redirect funnels, audience segmentation, and CPL optimization.</p><div class="svc-tags"><span class="svc-pill">Beauty Clinics</span><span class="svc-pill">Aviation</span><span class="svc-pill">High Ticket</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-navy"><span class="svc-icon">🛍️</span><h3 class="svc-title">E-Commerce Scaling</h3></div><div class="svc-body"><p>Fashion, fragrance, beauty, and accessories brands scaled profitably. Proven in the Egyptian market.</p><div class="svc-tags"><span class="svc-pill">Egypt</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-purple"><span class="svc-icon">📱</span><h3 class="svc-title">Mobile App Growth</h3></div><div class="svc-body"><p>App install campaigns with event optimization via Firebase, focused on lowering CPI while sustaining high-volume monthly installs.</p><div class="svc-tags"><span class="svc-pill">App Installs</span><span class="svc-pill">Event Optimization</span><span class="svc-pill">Firebase</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-brown"><span class="svc-icon">📋</span><h3 class="svc-title">Media Strategy &amp; Planning</h3></div><div class="svc-body"><p>Full campaign briefs, audience mapping, budget allocation in EGP/SAR/USD, creative frameworks, and KPI targets per funnel stage.</p><div class="svc-tags"><span class="svc-pill">Full Funnel</span><span class="svc-pill">Creative Briefs</span><span class="svc-pill">Budget Planning</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-teal"><span class="svc-icon">📈</span><h3 class="svc-title">Performance Reporting</h3></div><div class="svc-body"><p>Monthly client reports with real insights — what worked, what didn't, and the exact roadmap for the next sprint. Arabic &amp; English.</p><div class="svc-tags"><span class="svc-pill">Arabic</span><span class="svc-pill">English</span><span class="svc-pill">Dashboards</span></div></div></article></div>
                 </div>
             </div>
         </section>
@@ -939,6 +1027,24 @@
                 if(e.isIntersecting){Object.keys(links).forEach(function(k){links[k].classList.remove('nv-active');});var l=links[e.target.id];if(l)l.classList.add('nv-active');}
             });},{rootMargin:'-35% 0px -55% 0px'});
             Object.keys(links).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el);});
+        })();
+    </script>
+
+    <script>
+        // Hero visual: looping ROAS counter synced to the chart draw (6s cycle)
+        (function(){
+            var el=document.getElementById('hvRoas');if(!el)return;
+            if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+            var target=5.70,cycle=6000,rise=2500;
+            function tick(ts){
+                var p=(ts%cycle),v;
+                if(p<rise){var x=p/rise;v=target*(1-Math.pow(1-x,3));}
+                else if(p<cycle*0.88)v=target;
+                else v=target*Math.max(0,1-(p-cycle*0.88)/(cycle*0.1));
+                el.textContent=v.toFixed(2)+'x';
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
         })();
     </script>
 </body>
