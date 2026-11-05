@@ -493,6 +493,26 @@
         .brand-logo img{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:50%!important;transform:none!important}
         .brand-item:hover .brand-logo{transform:translateY(-6px) scale(1.08)!important;box-shadow:0 0 0 1px #93C5FD,0 18px 30px -10px rgba(24,119,242,.4)!important}
         @media(max-width:640px){.brand-logo{width:76px!important;height:76px!important}}
+
+        /* Footer links grid */
+        .fx{display:grid;grid-template-columns:1fr 1fr;gap:34px 24px;padding:44px 4px 30px}
+        @media(min-width:900px){.fx{grid-template-columns:1.7fr 1fr 1fr 1fr;gap:24px;padding:56px 8px 36px}}
+        .fx-col{display:flex;flex-direction:column;gap:14px;opacity:0;transform:translateY(22px);transition:opacity .7s ease calc(var(--i)*110ms),transform .7s cubic-bezier(.2,.8,.2,1) calc(var(--i)*110ms)}
+        .fx.fx-in .fx-col{opacity:1;transform:none}
+        .fx-brand{grid-column:1/-1}
+        @media(min-width:900px){.fx-brand{grid-column:auto}}
+        .fx-logo{font-size:1.5rem;font-weight:900;letter-spacing:-.04em;color:#0F172A;text-decoration:none;width:max-content}
+        .fx-logo b{color:#00A8F0}
+        .fx-brand p{max-width:340px;font-size:15px;line-height:1.75;color:#475569;margin:0}
+        .fx-col h4{margin:0 0 4px;font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#0F172A}
+        .fx-col>a:not(.fx-logo){position:relative;width:max-content;font-size:15.5px;color:#334155;text-decoration:none;transition:color .25s,transform .25s}
+        .fx-col>a:not(.fx-logo)::after{content:"";position:absolute;left:0;bottom:-3px;height:2px;width:100%;background:#00B4FF;border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+        .fx-col>a:not(.fx-logo):hover{color:#0F172A;transform:translateX(4px)}
+        .fx-col>a:not(.fx-logo):hover::after{transform:scaleX(1)}
+        .fx-bottom{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding-top:22px;border-top:1px solid #D5DAE3;font-size:12.5px;color:#64748B}
+        .fx-bottom a{color:#334155;font-weight:600;text-decoration:none;transition:color .25s}
+        .fx-bottom a:hover{color:#00A8F0}
+        @media (prefers-reduced-motion:reduce){.fx-col{opacity:1;transform:none;transition:none}}
     </style>
 </head>
 <body id="top" class="antialiased selection:bg-blue-100 selection:text-blue-900 relative">
@@ -900,7 +920,38 @@
 
                 </div>
 
-                <p class="text-center text-xs text-slate-500 mt-5">© 2026 Omar Khaled — Performance Media Buyer. All campaign data verified from Meta Ads Manager dashboard reports.</p>
+                <div class="fx" id="fxGrid">
+                    <div class="fx-col fx-brand" style="--i:0">
+                        <a href="#top" class="fx-logo">Omar Khaled<b>.</b></a>
+                        <p>Performance Media Buyer — turning paid ad spend into predictable e-commerce revenue.</p>
+                        <p>Cairo, Egypt.</p>
+                    </div>
+                    <div class="fx-col" style="--i:1">
+                        <h4>Navigate</h4>
+                        <a href="#results">Work</a>
+                        <a href="#services">Services</a>
+                        <a href="#platforms">Platforms</a>
+                        <a href="#brands">Brands</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    <div class="fx-col" style="--i:2">
+                        <h4>Platforms</h4>
+                        <a href="#platforms">Meta Ads</a>
+                        <a href="#platforms">TikTok Ads</a>
+                        <a href="#platforms">Google Ads</a>
+                    </div>
+                    <div class="fx-col" style="--i:3">
+                        <h4>Contact</h4>
+                        <a href="mailto:omarrkhaled100@gmail.com">Email</a>
+                        <a href="https://wa.me/201033177357" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                        <a href="https://www.linkedin.com/in/omar-khaled-605211315" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://instagram.com/omarrkhaledd._" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    </div>
+                </div>
+                <div class="fx-bottom">
+                    <span>© 2026 Omar Khaled — Performance Media Buyer. All campaign data verified from Meta Ads Manager dashboard reports.</span>
+                    <a href="#top">Back to top ↑</a>
+                </div>
             </div>
         </footer>
 
@@ -1051,6 +1102,15 @@
                 requestAnimationFrame(tick);
             }
             requestAnimationFrame(tick);
+        })();
+    </script>
+
+    <script>
+        (function(){
+            var g=document.getElementById('fxGrid');if(!g)return;
+            if(!('IntersectionObserver' in window)){g.classList.add('fx-in');return;}
+            var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){g.classList.add('fx-in');io.disconnect();}},{threshold:.15});
+            io.observe(g);
         })();
     </script>
 </body>
