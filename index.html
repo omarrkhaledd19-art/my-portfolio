@@ -513,6 +513,62 @@
         .fx-bottom a{color:#334155;font-weight:600;text-decoration:none;transition:color .25s}
         .fx-bottom a:hover{color:#00A8F0}
         @media (prefers-reduced-motion:reduce){.fx-col{opacity:1;transform:none;transition:none}}
+
+        /* Hero background: aurora + interactive dot field (replaces square grid) */
+        .hero-grid::before{display:none!important}
+        .hero-grid{overflow:hidden}
+        .hbg{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;--mx:70%;--my:38%;
+            -webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);mask-image:linear-gradient(180deg,#000 62%,transparent)}
+        .hbg-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;will-change:transform}
+        .hbg-o1{width:460px;height:460px;background:rgba(0,180,255,.28);right:6%;top:-8%;animation:hbgA 18s ease-in-out infinite alternate}
+        .hbg-o2{width:380px;height:380px;background:rgba(99,102,241,.22);left:-6%;top:30%;animation:hbgB 22s ease-in-out infinite alternate}
+        .hbg-o3{width:320px;height:320px;background:rgba(16,185,129,.18);right:28%;bottom:-12%;animation:hbgC 20s ease-in-out infinite alternate}
+        @keyframes hbgA{to{transform:translate(-90px,70px) scale(1.2)}}
+        @keyframes hbgB{to{transform:translate(110px,-60px) scale(1.15)}}
+        @keyframes hbgC{to{transform:translate(-70px,-50px) scale(1.25)}}
+        .hbg-dots,.hbg-lit{position:absolute;inset:0}
+        .hbg-dots{background-image:radial-gradient(circle,rgba(71,85,105,.30) 1.2px,transparent 1.7px);background-size:28px 28px}
+        .hbg-lit{background-image:radial-gradient(circle,rgba(0,150,255,.95) 1.8px,transparent 2.4px);background-size:28px 28px;
+            -webkit-mask-image:radial-gradient(circle 230px at var(--mx) var(--my),#000 0%,rgba(0,0,0,.35) 55%,transparent 100%);
+            mask-image:radial-gradient(circle 230px at var(--mx) var(--my),#000 0%,rgba(0,0,0,.35) 55%,transparent 100%)}
+        .hbg-spot{position:absolute;inset:0;background:radial-gradient(circle 260px at var(--mx) var(--my),rgba(0,180,255,.14),transparent 70%)}
+        @media (prefers-reduced-motion:reduce){.hbg-orb{animation:none}}
+
+        /* Hero background: flowing wave streams */
+        .hbg-orb{opacity:.38}
+        #hbgWaves{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+        /* Hero background: simple - two soft drifting glows */
+        .hbg{-webkit-mask-image:none!important;mask-image:none!important}
+        .hbg-orb{opacity:.5;filter:blur(90px)}
+        
+        /* Hero background: gentle fade in / out (breathing glows) */
+        .hbg{animation:hbgIn 2.2s ease both}
+        @keyframes hbgIn{from{opacity:0}to{opacity:1}}
+        .hbg-orb{opacity:.5}
+        .hbg-o1{animation:hbgA 26s ease-in-out infinite alternate,hbgFade 8s ease-in-out infinite}
+        .hbg-o2{animation:hbgB 30s ease-in-out infinite alternate,hbgFade 10s ease-in-out -3s infinite}
+        .hbg-o3{animation:hbgC 28s ease-in-out infinite alternate,hbgFade 12s ease-in-out -6s infinite}
+        @keyframes hbgFade{0%,100%{opacity:.18}50%{opacity:.6}}
+        @media (prefers-reduced-motion:reduce){.hbg,.hbg-orb{animation:none!important}.hbg-orb{opacity:.4}}
+
+        /* Hero background: livelier (still soft) */
+        .hbg-par{position:absolute;inset:0;transform:translate(var(--px,0px),var(--py,0px))}
+        .hbg-sheen{position:absolute;inset:-60%;background:conic-gradient(from 0deg,transparent 0%,rgba(0,180,255,.13) 12%,transparent 30%,rgba(99,102,241,.11) 48%,transparent 62%,rgba(16,185,129,.11) 80%,transparent 100%);filter:blur(50px);animation:hbgSpin 36s linear infinite}
+        @keyframes hbgSpin{to{transform:rotate(360deg)}}
+        .hbg-orb{opacity:.5;filter:blur(70px)}
+        .hbg-o1{width:540px;height:540px;right:2%;top:-14%;background:rgba(0,180,255,.34);animation:hbgM1 15s ease-in-out infinite alternate,hbgFade2 6s ease-in-out infinite}
+        .hbg-o2{width:460px;height:460px;left:-8%;top:24%;background:rgba(99,102,241,.28);animation:hbgM2 18s ease-in-out infinite alternate,hbgFade2 8s ease-in-out -2s infinite}
+        .hbg-o3{width:400px;height:400px;right:26%;bottom:-16%;background:rgba(16,185,129,.24);animation:hbgM3 16s ease-in-out infinite alternate,hbgFade2 7s ease-in-out -4s infinite}
+        .hbg-o4{width:340px;height:340px;left:34%;top:-12%;background:rgba(56,189,248,.26);animation:hbgM4 20s ease-in-out infinite alternate,hbgFade2 9s ease-in-out -1s infinite}
+        .hbg-o5{width:300px;height:300px;right:-6%;bottom:6%;background:rgba(167,139,250,.26);animation:hbgM5 17s ease-in-out infinite alternate,hbgFade2 6.5s ease-in-out -5s infinite}
+        @keyframes hbgM1{0%{transform:translate(0,0) scale(1)}33%{transform:translate(-150px,100px) scale(1.25)}66%{transform:translate(60px,170px) scale(.9)}100%{transform:translate(-100px,-30px) scale(1.15)}}
+        @keyframes hbgM2{0%{transform:translate(0,0) scale(1)}33%{transform:translate(160px,-70px) scale(1.2)}66%{transform:translate(90px,120px) scale(.88)}100%{transform:translate(220px,30px) scale(1.12)}}
+        @keyframes hbgM3{0%{transform:translate(0,0) scale(1)}33%{transform:translate(-130px,-90px) scale(1.3)}66%{transform:translate(70px,-140px) scale(.9)}100%{transform:translate(-190px,-30px) scale(1.1)}}
+        @keyframes hbgM4{0%{transform:translate(0,0) scale(1)}50%{transform:translate(180px,130px) scale(1.3)}100%{transform:translate(-120px,160px) scale(.95)}}
+        @keyframes hbgM5{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-170px,-110px) scale(1.25)}100%{transform:translate(60px,-170px) scale(.9)}}
+        @keyframes hbgFade2{0%,100%{opacity:.12}50%{opacity:.7}}
+        @media (prefers-reduced-motion:reduce){.hbg-sheen,.hbg-orb{animation:none!important}.hbg-orb{opacity:.4}}
     </style>
 </head>
 <body id="top" class="antialiased selection:bg-blue-100 selection:text-blue-900 relative">
@@ -562,6 +618,17 @@
 
         <!-- HERO SECTION -->
         <section class="hero-grid pt-12 pb-16 md:pt-20 md:pb-24 relative">
+            <aside class="hbg" id="hbg" aria-hidden="true">
+                <span class="hbg-sheen"></span>
+                <span class="hbg-par" id="hbgPar">
+                    <span class="hbg-orb hbg-o1"></span>
+                    <span class="hbg-orb hbg-o2"></span>
+                    <span class="hbg-orb hbg-o3"></span>
+                    <span class="hbg-orb hbg-o4"></span>
+                    <span class="hbg-orb hbg-o5"></span>
+                </span>
+            </aside>
+
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
                 
                 <!-- Hero visual (desktop) -->
@@ -1111,6 +1178,18 @@
             if(!('IntersectionObserver' in window)){g.classList.add('fx-in');return;}
             var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){g.classList.add('fx-in');io.disconnect();}},{threshold:.15});
             io.observe(g);
+        })();
+    </script>
+
+    <script>
+        // Hero background: glows drift slightly with the mouse
+        (function(){
+            var sec=document.querySelector('.hero-grid'),par=document.getElementById('hbgPar');if(!sec||!par)return;
+            if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+            var tx=0,ty=0,x=0,y=0,on=false;
+            sec.addEventListener('mousemove',function(e){var r=sec.getBoundingClientRect();tx=-((e.clientX-r.left)/r.width-.5)*70;ty=-((e.clientY-r.top)/r.height-.5)*50;});
+            sec.addEventListener('mouseleave',function(){tx=0;ty=0;});
+            (function f(){x+=(tx-x)*.05;y+=(ty-y)*.05;par.style.setProperty('--px',x.toFixed(1)+'px');par.style.setProperty('--py',y.toFixed(1)+'px');requestAnimationFrame(f);})();
         })();
     </script>
 </body>
