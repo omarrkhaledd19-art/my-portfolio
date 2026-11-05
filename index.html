@@ -338,6 +338,22 @@
         }
         @media(max-width:420px){.nv-role{display:none}.nv-cta{padding:9px 13px}}
         @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nv-header{animation:none}}
+
+        /* WhatsApp buttons - blue */
+        .wa-blue{background:#00B4FF;color:#06223D}
+        .wa-blue:hover{background:#2BC4FF;color:#06223D}
+        .glow-wa{box-shadow:0 8px 25px -5px rgba(0,180,255,.45)!important}
+        .glow-wa:hover{box-shadow:0 12px 32px -3px rgba(0,180,255,.65)!important}
+        /* Footer - compact */
+        .ft-card{padding:44px 24px 40px!important;border-radius:26px!important}
+        .ft-title{font-size:clamp(1.7rem,4.4vw,2.7rem)!important}
+        .ft-sub{margin-top:18px!important;padding:14px 22px!important;font-size:clamp(.88rem,2vw,.98rem)!important;max-width:500px!important;border-radius:18px!important}
+        .ft-btns{margin-top:24px!important;gap:12px!important}
+        .ft-btn{padding:14px 30px!important;font-size:1rem!important;border-radius:14px!important}
+        .ft-btn-wa i{font-size:1.2rem!important}
+        .ft-mail{margin-top:16px!important;font-size:.82rem!important}
+        .ft-circle{width:260px!important;height:260px!important;top:-90px!important;right:-60px!important}
+        @media(max-width:640px){.ft-card{padding:34px 16px 30px!important}.ft-btn{padding:14px 20px!important}}
     </style>
 </head>
 <body id="top" class="antialiased selection:bg-blue-100 selection:text-blue-900 relative">
@@ -429,7 +445,7 @@
                     <a href="https://wa.me/201033177357?text=Hi%20Omar,%20I%20want%20to%20discuss%20scaling%20my%20store's%20ROAS." 
                        target="_blank"
                        rel="noopener noreferrer"
-                       class="w-full sm:w-auto px-8 py-4 bg-brand-whatsapp hover:bg-brand-whatsappDark text-white font-bold text-base rounded-2xl shadow-lg glow-wa transition-all transform hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-3">
+                       class="w-full sm:w-auto px-8 py-4 wa-blue font-bold text-base rounded-2xl glow-wa transition-all transform hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-3">
                         <i class="fa-brands fa-whatsapp text-2xl"></i>
                         <span>Chat on WhatsApp</span>
                     </a>
@@ -438,26 +454,6 @@
                         <span>View Verified Results</span>
                         <i class="fa-solid fa-arrow-down text-xs text-slate-400"></i>
                     </a>
-                </div>
-
-                <!-- Metric Summary Highlights -->
-                <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="glass-card p-5 rounded-2xl meta-shadow text-center hover:-translate-y-1 transition-transform duration-300">
-                        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Account ROAS</div>
-                        <div class="text-3xl font-extrabold text-blue-600 font-mono">3.88x</div>
-                    </div>
-                    <div class="glass-card p-5 rounded-2xl meta-shadow text-center hover:-translate-y-1 transition-transform duration-300">
-                        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Top Campaign ROAS</div>
-                        <div class="text-3xl font-extrabold text-emerald-600 font-mono">5.70x</div>
-                    </div>
-                    <div class="glass-card p-5 rounded-2xl meta-shadow text-center hover:-translate-y-1 transition-transform duration-300">
-                        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Generated Revenue</div>
-                        <div class="text-3xl font-extrabold text-slate-900 font-mono">142.1k <span class="text-xs text-slate-500 font-sans">EGP</span></div>
-                    </div>
-                    <div class="glass-card p-5 rounded-2xl meta-shadow text-center hover:-translate-y-1 transition-transform duration-300">
-                        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Total Purchases</div>
-                        <div class="text-3xl font-extrabold text-indigo-600 font-mono">33 <span class="text-xs text-slate-500 font-sans">(35 Total)</span></div>
-                    </div>
                 </div>
 
             </div>
@@ -777,7 +773,7 @@
 
         <!-- WHATSAPP CONTACT BANNER -->
         <!-- FOOTER -->
-        <footer id="contact" class="pt-8 pb-8 border-t border-slate-300/70">
+        <footer id="contact" class="pt-4 pb-6 border-t border-slate-300/70">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <div class="ft-card ft-reveal">
@@ -792,7 +788,7 @@
                     <a class="ft-mail" href="mailto:omarrkhaled100@gmail.com">omarrkhaled100@gmail.com</a>
                 </div>
 
-                <p class="text-center text-xs text-slate-500 mt-8">© 2026 Omar Khaled — Performance Media Buyer. All campaign data verified from Meta Ads Manager dashboard reports.</p>
+                <p class="text-center text-xs text-slate-500 mt-5">© 2026 Omar Khaled — Performance Media Buyer. All campaign data verified from Meta Ads Manager dashboard reports.</p>
             </div>
         </footer>
 
