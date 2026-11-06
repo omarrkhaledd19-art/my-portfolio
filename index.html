@@ -573,6 +573,11 @@
         /* Lighter page background */
         .rs-section{background:linear-gradient(180deg,#FAFBFD 0%,#F4F6F9 100%)!important}
         @keyframes hbgFade2{0%,100%{opacity:.1}50%{opacity:.55}}
+
+        /* Clip decorative blobs so they never create a blank strip / sideways scroll */
+        .ambient-wrap{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+        .rs-section,#services,#brands{overflow:hidden}
+        .rs-section,.hero-grid,#services,#brands{position:relative}
     </style>
 </head>
 <body id="top" class="antialiased selection:bg-blue-100 selection:text-blue-900 relative">
@@ -581,9 +586,11 @@
     <canvas id="bgCanvas"></canvas>
 
     <!-- Animated Ambient Mesh Blobs -->
-    <div class="ambient-blob blob-1"></div>
-    <div class="ambient-blob blob-2"></div>
-    <div class="ambient-blob blob-3"></div>
+    <div class="ambient-wrap" aria-hidden="true">
+        <div class="ambient-blob blob-1"></div>
+        <div class="ambient-blob blob-2"></div>
+        <div class="ambient-blob blob-3"></div>
+    </div>
 
     <!-- MAIN CONTENT CONTAINER -->
     <div class="relative z-10">
