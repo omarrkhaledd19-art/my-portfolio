@@ -578,6 +578,25 @@
         .ambient-wrap{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
         .rs-section,#services,#brands{overflow:hidden}
         .rs-section,.hero-grid,#services,#brands{position:relative}
+
+        /* Hero: text sits on the left side of the page (not in a centred box) */
+        @media(min-width:1100px){
+            .hero-grid>div{max-width:none!important;margin-left:0!important;margin-right:0!important;padding-left:clamp(32px,6vw,120px)!important;padding-right:clamp(32px,6vw,120px)!important}
+            .hv{right:clamp(32px,6vw,120px)}
+        }
+
+        /* Hero visual: icons are plain symbols (always render) + moved down */
+        .hv-g{font-family:'Inter','Segoe UI Emoji','Apple Color Emoji',sans-serif;font-weight:800;line-height:1;font-style:normal}
+        .hv-chip-ic .hv-g{font-size:16px}
+        .hv{top:170px!important}
+
+        /* Hero buttons: compact on phones */
+        @media(max-width:640px){
+            .hero-grid .hb-row{gap:10px;flex-wrap:nowrap}
+            .hero-grid .hb-row .hb{flex:0 0 auto!important;width:auto!important;padding:11px 18px!important;font-size:.88rem!important;border-radius:12px!important;gap:7px}
+            .hero-grid .hb-row .hb-wa i{font-size:1.05rem!important}
+        }
+        @media(max-width:360px){.hero-grid .hb-row .hb{padding:10px 14px!important;font-size:.82rem!important}}
     </style>
 </head>
 <body id="top" class="antialiased selection:bg-blue-100 selection:text-blue-900 relative">
@@ -647,10 +666,10 @@
                     <div class="hv-ring hv-ring1"></div>
                     <div class="hv-ring hv-ring2"></div>
                     <div class="hv-orbit">
-                        <span class="hv-slot" style="--a:0deg"><span class="hv-ico"><i class="fa-brands fa-meta" style="color:#1877F2"></i></span></span>
-                        <span class="hv-slot" style="--a:90deg"><span class="hv-ico"><i class="fa-brands fa-tiktok" style="color:#0F172A"></i></span></span>
-                        <span class="hv-slot" style="--a:180deg"><span class="hv-ico"><i class="fa-brands fa-google" style="color:#EA4335"></i></span></span>
-                        <span class="hv-slot" style="--a:270deg"><span class="hv-ico"><i class="fa-solid fa-bag-shopping" style="color:#10B981"></i></span></span>
+                        <span class="hv-slot" style="--a:0deg"><span class="hv-ico"><span class="hv-g" style="color:#1877F2;font-size:30px">∞</span></span></span>
+                        <span class="hv-slot" style="--a:90deg"><span class="hv-ico"><span class="hv-g" style="color:#0F172A;font-size:24px">♪</span></span></span>
+                        <span class="hv-slot" style="--a:180deg"><span class="hv-ico"><span class="hv-g" style="color:#EA4335;font-size:24px">G</span></span></span>
+                        <span class="hv-slot" style="--a:270deg"><span class="hv-ico"><span class="hv-g" style="font-size:22px">🛍️</span></span></span>
                     </div>
 
                     <div class="hv-card">
@@ -673,8 +692,8 @@
                         </div>
                     </div>
 
-                    <div class="hv-chip hv-chip1"><span class="hv-chip-ic" style="background:#FEF3C7;color:#B45309"><i class="fa-solid fa-trophy"></i></span><div><small>Top ROAS</small><b>5.70x</b></div></div>
-                    <div class="hv-chip hv-chip2"><span class="hv-chip-ic" style="background:#D1FAE5;color:#047857"><i class="fa-solid fa-arrow-trend-up"></i></span><div><small>Conversion value</small><b>94,850 EGP</b></div></div>
+                    <div class="hv-chip hv-chip1"><span class="hv-chip-ic" style="background:#FEF3C7;color:#B45309"><span class="hv-g">🏆</span></span><div><small>Top ROAS</small><b>5.70x</b></div></div>
+                    <div class="hv-chip hv-chip2"><span class="hv-chip-ic" style="background:#D1FAE5;color:#047857"><span class="hv-g">📈</span></span><div><small>Conversion value</small><b>94,850 EGP</b></div></div>
                     <div class="hv-chip hv-chip3"><span class="hv-ping"></span><b>New purchase</b><span>🛍️</span></div>
                 </div>
 
