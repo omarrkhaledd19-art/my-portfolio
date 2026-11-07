@@ -653,6 +653,23 @@
         .fx-col>a.fx-wa{display:inline-flex;align-items:center;gap:8px}
         .fx-wa .wa-ic{width:17px;height:17px;color:#00A8F0}
         @media(max-width:640px){.hero-grid .hb-row .hb-wa .wa-ic{width:17px;height:17px}}
+
+        /* Open to Opportunities pill - animated */
+        .oto{position:relative;display:inline-flex;align-items:center;gap:10px;margin-bottom:32px;padding:10px 22px 10px 18px;border-radius:999px;overflow:hidden;isolation:isolate;color:#1E293B;font-size:15px;font-weight:600;cursor:default;box-shadow:0 8px 22px -12px rgba(0,150,255,.55);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+        .oto::before{content:"";position:absolute;inset:-160%;z-index:-2;background:conic-gradient(from 0deg,transparent 0 62%,#00B4FF 80%,#6366F1 92%,#10B981 97%,transparent);animation:otoSpin 3.2s linear infinite}
+        .oto::after{content:"";position:absolute;inset:1.6px;border-radius:inherit;z-index:-1;background:linear-gradient(180deg,#FFFFFF,#EEF3FA)}
+        @keyframes otoSpin{to{transform:rotate(360deg)}}
+        .oto-shine{position:absolute;top:0;bottom:0;left:-40%;width:35%;z-index:0;background:linear-gradient(100deg,transparent,rgba(0,180,255,.28),transparent);transform:skewX(-20deg);animation:otoShine 4.2s ease-in-out infinite}
+        @keyframes otoShine{0%,55%{left:-40%}100%{left:130%}}
+        .oto-dot{position:relative;z-index:1;width:10px;height:10px;border-radius:50%;background:#10B981;flex-shrink:0}
+        .oto-dot::before,.oto-dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#10B981;animation:otoPing 2s ease-out infinite}
+        .oto-dot::after{animation-delay:1s}
+        @keyframes otoPing{0%{transform:scale(1);opacity:.65}100%{transform:scale(3.2);opacity:0}}
+        .oto-text{position:relative;z-index:1;background:linear-gradient(90deg,#1E293B 0%,#1E293B 40%,#0284C7 50%,#1E293B 60%,#1E293B 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:otoText 4.2s ease-in-out infinite}
+        @keyframes otoText{0%,55%{background-position:100% 0}100%{background-position:-50% 0}}
+        .oto:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 14px 28px -12px rgba(0,150,255,.7)}
+        @media(max-width:640px){.oto{font-size:13.5px;padding:9px 18px 9px 15px}}
+        @media (prefers-reduced-motion:reduce){.oto::before,.oto-shine,.oto-dot::before,.oto-dot::after,.oto-text{animation:none}.oto-text{color:#1E293B;background:none}}
     </style>
 </head>
 <body id="top" class="antialiased selection:bg-blue-100 selection:text-blue-900 relative">
@@ -772,11 +789,11 @@
                     </div>
                 </div>
 
-                <div class="hero-in inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-slate-200/70 border border-slate-300 text-slate-800 text-sm sm:text-base font-medium mb-8" style="--d:120ms">
-                    <span class="h-2.5 w-2.5 rounded-full bg-slate-400"></span>
-                    Open to Opportunities · Cairo, EG
+                <div class="hero-in oto" style="--d:120ms">
+                    <span class="oto-shine" aria-hidden="true"></span>
+                    <span class="oto-dot" aria-hidden="true"></span>
+                    <span class="oto-text">Open to Opportunities · Cairo, EG</span>
                 </div>
-
                 <!-- Headline -->
                 <h1 class="mb-8 uppercase font-black tracking-tighter leading-[0.95]">
                     <span class="hero-in block text-4xl sm:text-6xl lg:text-7xl text-slate-900" style="--d:220ms">Omar</span>
@@ -1281,11 +1298,11 @@
     </script>
 
     <!-- Quick questions: side widget -->
-    <aside class="wq" id="wq" aria-label="Quick questions">
-        <button class="wq-pill" id="wqPill" type="button" aria-expanded="false"><span class="wq-dot"></span> Quick questions</button>
+    <aside class="wq" id="wq" aria-label="Let’s begin">
+        <button class="wq-pill" id="wqPill" type="button" aria-expanded="false"><span class="wq-dot"></span> Let’s begin</button>
         <div class="wq-card" role="group" aria-labelledby="wqTitle">
             <button class="wq-x" id="wqMin" type="button" aria-label="Minimize">–</button>
-            <h3 id="wqTitle">Quick questions</h3>
+            <h3 id="wqTitle">Let’s begin</h3>
             <p class="wq-sub">Answer 3 things and I’ll reply with the right plan 👇</p>
 
             <label class="wq-l" for="wqIndustry">Your industry</label>
