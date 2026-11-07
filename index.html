@@ -597,9 +597,66 @@
             .hero-grid .hb-row .hb-wa i{font-size:1.05rem!important}
         }
         @media(max-width:360px){.hero-grid .hb-row .hb{padding:10px 14px!important;font-size:.82rem!important}}
+
+        /* keep "e-commerce" together on one line */
+        .nw{white-space:nowrap}
+
+
+        /* Quick questions: small side widget */
+        .wq{position:fixed;right:18px;bottom:18px;z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:10px;pointer-events:none;font-family:'Inter',sans-serif;opacity:0;transform:translateX(30px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+        .wq.wq-ready{opacity:1;transform:none}
+        .wq-card,.wq-pill{pointer-events:auto}
+        .wq-card{position:relative;width:296px;max-width:calc(100vw - 24px);background:rgba(255,255,255,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid #DCE2EC;border-radius:20px;padding:18px 16px 14px;box-shadow:0 24px 50px -18px rgba(15,23,42,.45);transform-origin:bottom right;transition:opacity .3s ease,transform .4s cubic-bezier(.2,.8,.2,1),visibility 0s linear .4s;opacity:0;visibility:hidden;transform:translateY(16px) scale(.94)}
+        .wq-open .wq-card{opacity:1;visibility:visible;transform:none;transition:opacity .3s ease,transform .4s cubic-bezier(.2,.8,.2,1)}
+        .wq-card h3{margin:0;font-size:15.5px;font-weight:800;color:#0F172A;letter-spacing:-.01em}
+        .wq-sub{margin:3px 28px 10px 0;font-size:12px;line-height:1.45;color:#64748B}
+        .wq-x{position:absolute;top:11px;right:11px;width:26px;height:26px;border-radius:50%;border:0;background:#F1F5F9;color:#475569;font-size:16px;line-height:1;cursor:pointer;transition:background .2s}
+        .wq-x:hover{background:#E2E8F0}
+        .wq-l{display:block;margin:9px 0 4px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#475569}
+        .wq-l em{font-style:normal;text-transform:none;letter-spacing:0;font-weight:500;color:#94A3B8}
+        .wq-in{width:100%;box-sizing:border-box;padding:9px 11px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font:500 13.5px 'Inter',sans-serif;color:#0F172A;outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
+        .wq-in:focus{border-color:#00B4FF;background:#fff;box-shadow:0 0 0 3px rgba(0,180,255,.15)}
+        .wq-in.wq-err{border-color:#F43F5E;animation:wqShake .35s}
+        @keyframes wqShake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+        .wq-chips{display:flex;flex-wrap:wrap;gap:6px}
+        .wq-chips button{padding:6px 11px;border-radius:999px;border:1.5px solid #E2E8F0;background:#F8FAFC;font:600 12px 'Inter',sans-serif;color:#334155;cursor:pointer;transition:all .2s}
+        .wq-chips button:hover{border-color:#93C5FD}
+        .wq-chips button.on{background:#1B3A6B;border-color:#1B3A6B;color:#fff;transform:scale(1.04)}
+        .wq-go{width:100%;margin-top:14px;padding:11px 14px;border:0;border-radius:12px;background:#00B4FF;color:#06223D;font:800 14px 'Inter',sans-serif;cursor:pointer;box-shadow:0 10px 20px -10px rgba(0,180,255,.8);transition:transform .25s,box-shadow .25s,background .25s}
+        .wq-go:hover{background:#2BC4FF;transform:translateY(-2px)}
+        .wq-go span{display:inline-block;transition:transform .25s}
+        .wq-go:hover span{transform:translateX(4px)}
+        .wq-skip{display:block;margin-top:8px;text-align:center;font-size:11.5px;color:#64748B;text-decoration:none}
+        .wq-skip:hover{color:#0F172A;text-decoration:underline}
+        .wq-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:0;border-radius:999px;background:linear-gradient(135deg,#1B3A6B,#12285A);color:#fff;font:700 13px 'Inter',sans-serif;cursor:pointer;box-shadow:0 14px 28px -10px rgba(18,40,90,.8);transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .25s,box-shadow .3s;animation:wqBob 4.5s ease-in-out infinite}
+        .wq-pill:hover{transform:translateY(-3px) scale(1.04)}
+        .wq-open .wq-pill{opacity:0;transform:scale(.7);pointer-events:none;animation:none;position:absolute;right:0;bottom:0}
+        .wq-dot{width:8px;height:8px;border-radius:50%;background:#00D4FF;animation:wqPulse 1.8s infinite}
+        @keyframes wqPulse{0%{box-shadow:0 0 0 0 rgba(0,212,255,.7)}70%{box-shadow:0 0 0 8px rgba(0,212,255,0)}100%{box-shadow:0 0 0 0 rgba(0,212,255,0)}}
+        @keyframes wqBob{50%{transform:translateY(-4px)}}
+        .wq.wq-ping .wq-card{animation:wqPing .7s ease}
+        @keyframes wqPing{40%{transform:scale(1.04);box-shadow:0 0 0 6px rgba(0,180,255,.25),0 24px 50px -18px rgba(15,23,42,.45)}}
+        @media(max-width:899px){.wq{right:12px;bottom:12px}.wq-open{left:12px}.wq-card{width:100%;max-width:none}}
+        @media (prefers-reduced-motion:reduce){.wq,.wq-card,.wq-pill{transition:none;animation:none}.wq-in.wq-err{animation:none}}
+
+        .wq:not(.wq-open) .wq-card{position:absolute;right:0;bottom:0}
+
+        .wq,.wq *{box-sizing:border-box}
+
+        /* WhatsApp icon (built-in SVG, always renders) in every WhatsApp button */
+        .wa-ic{width:1.2em;height:1.2em;fill:currentColor;flex-shrink:0;display:inline-block}
+        .hb-wa .wa-ic{width:20px;height:20px}
+        .ft-btn-wa .wa-ic{width:22px;height:22px}
+        .wq-go{display:flex;align-items:center;justify-content:center;gap:8px}
+        .wq-go .wa-ic{width:19px;height:19px}
+        .wq-go b{font-weight:800}
+        .fx-col>a.fx-wa{display:inline-flex;align-items:center;gap:8px}
+        .fx-wa .wa-ic{width:17px;height:17px;color:#00A8F0}
+        @media(max-width:640px){.hero-grid .hb-row .hb-wa .wa-ic{width:17px;height:17px}}
     </style>
 </head>
 <body id="top" class="antialiased selection:bg-blue-100 selection:text-blue-900 relative">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa-sym" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol></svg>
 
     <!-- Interactive Particle Background Canvas -->
     <canvas id="bgCanvas"></canvas>
@@ -724,15 +781,15 @@
                 <h1 class="mb-8 uppercase font-black tracking-tighter leading-[0.95]">
                     <span class="hero-in block text-4xl sm:text-6xl lg:text-7xl text-slate-900" style="--d:220ms">Omar</span>
                     <span class="hero-in block text-4xl sm:text-6xl lg:text-7xl text-[#1E3A6E]" style="--d:320ms">Khaled</span>
-                    <span class="hero-in hero-glow block mt-3 text-2xl sm:text-4xl lg:text-5xl leading-[1.05]" style="--d:440ms">Turn paid ad spend into predictable e-commerce revenue.</span>
+                    <span class="hero-in hero-glow block mt-3 text-2xl sm:text-4xl lg:text-5xl leading-[1.05]" style="--d:440ms">Turn paid ad spend into predictable <span class="nw">e-commerce</span> revenue.</span>
                 </h1>
 
-                                <p class="hero-in hq-sub"  style="--d:660ms">Performance media buying across Meta, TikTok &amp; Google — for e-commerce brands in Egypt and beyond.</p>
+                                <p class="hero-in hq-sub"  style="--d:660ms">Performance media buying across Meta, TikTok &amp; Google — for <span class="nw">e-commerce</span> brands in Egypt and beyond.</p>
 
                 <!-- Action Buttons -->
                 <div class="hero-in hb-row" style="--d:760ms">
                     <a href="#contact" class="hb hb-primary">Get In Touch <span class="hb-arrow">→</span></a>
-                    <a href="https://wa.me/201033177357" target="_blank" rel="noopener noreferrer" class="hb hb-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://wa.me/201033177357" target="_blank" rel="noopener noreferrer" class="hb hb-wa"><svg class="wa-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa-sym"></use></svg> WhatsApp</a>
                 </div>
 
             </div>
@@ -758,7 +815,7 @@
                     <div class="rs-toolbar">
                         <div class="flex items-center gap-3 flex-wrap">
                             
-                            <span class="font-semibold text-slate-800 text-xs sm:text-sm">Omar Khaled — E-Commerce Scaling Account</span>
+                            <span class="font-semibold text-slate-800 text-xs sm:text-sm">Omar Khaled — <span class="nw">E-Commerce</span> Scaling Account</span>
                         </div>
 
                     </div>
@@ -851,8 +908,8 @@
             </div>
             <div class="reveal svc-marquee mt-10" aria-label="Services">
                 <div class="svc-track">
-                    <div class="svc-group"><article class="svc-card"><div class="svc-head svc-blue"><span class="svc-icon">📊</span><h3 class="svc-title">Paid Media Management</h3></div><div class="svc-body"><p>End-to-end campaign management. TOF/MOF/BOF architecture, daily budget shifts, kill rules, and ROAS scaling with data-backed decisions.</p><div class="svc-tags"><span class="svc-pill">Meta</span><span class="svc-pill">TikTok</span><span class="svc-pill">Snapchat</span><span class="svc-pill">Google</span></div></div></article><article class="svc-card"><div class="svc-head svc-green"><span class="svc-icon">🎯</span><h3 class="svc-title">Lead Generation (High Ticket)</h3></div><div class="svc-body"><p>Qualified lead strategies for clinics, education, and services. Website-redirect funnels, audience segmentation, and CPL optimization.</p><div class="svc-tags"><span class="svc-pill">Beauty Clinics</span><span class="svc-pill">Aviation</span><span class="svc-pill">High Ticket</span></div></div></article><article class="svc-card"><div class="svc-head svc-navy"><span class="svc-icon">🛍️</span><h3 class="svc-title">E-Commerce Scaling</h3></div><div class="svc-body"><p>Fashion, fragrance, beauty, and accessories brands scaled profitably. Proven in the Egyptian market.</p><div class="svc-tags"><span class="svc-pill">Egypt</span></div></div></article><article class="svc-card"><div class="svc-head svc-purple"><span class="svc-icon">📱</span><h3 class="svc-title">Mobile App Growth</h3></div><div class="svc-body"><p>App install campaigns with event optimization via Firebase, focused on lowering CPI while sustaining high-volume monthly installs.</p><div class="svc-tags"><span class="svc-pill">App Installs</span><span class="svc-pill">Event Optimization</span><span class="svc-pill">Firebase</span></div></div></article><article class="svc-card"><div class="svc-head svc-brown"><span class="svc-icon">📋</span><h3 class="svc-title">Media Strategy &amp; Planning</h3></div><div class="svc-body"><p>Full campaign briefs, audience mapping, budget allocation in EGP/SAR/USD, creative frameworks, and KPI targets per funnel stage.</p><div class="svc-tags"><span class="svc-pill">Full Funnel</span><span class="svc-pill">Creative Briefs</span><span class="svc-pill">Budget Planning</span></div></div></article><article class="svc-card"><div class="svc-head svc-teal"><span class="svc-icon">📈</span><h3 class="svc-title">Performance Reporting</h3></div><div class="svc-body"><p>Monthly client reports with real insights — what worked, what didn't, and the exact roadmap for the next sprint. Arabic &amp; English.</p><div class="svc-tags"><span class="svc-pill">Arabic</span><span class="svc-pill">English</span><span class="svc-pill">Dashboards</span></div></div></article></div>
-                    <div class="svc-group" aria-hidden="true"><article class="svc-card" aria-hidden="true"><div class="svc-head svc-blue"><span class="svc-icon">📊</span><h3 class="svc-title">Paid Media Management</h3></div><div class="svc-body"><p>End-to-end campaign management. TOF/MOF/BOF architecture, daily budget shifts, kill rules, and ROAS scaling with data-backed decisions.</p><div class="svc-tags"><span class="svc-pill">Meta</span><span class="svc-pill">TikTok</span><span class="svc-pill">Snapchat</span><span class="svc-pill">Google</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-green"><span class="svc-icon">🎯</span><h3 class="svc-title">Lead Generation (High Ticket)</h3></div><div class="svc-body"><p>Qualified lead strategies for clinics, education, and services. Website-redirect funnels, audience segmentation, and CPL optimization.</p><div class="svc-tags"><span class="svc-pill">Beauty Clinics</span><span class="svc-pill">Aviation</span><span class="svc-pill">High Ticket</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-navy"><span class="svc-icon">🛍️</span><h3 class="svc-title">E-Commerce Scaling</h3></div><div class="svc-body"><p>Fashion, fragrance, beauty, and accessories brands scaled profitably. Proven in the Egyptian market.</p><div class="svc-tags"><span class="svc-pill">Egypt</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-purple"><span class="svc-icon">📱</span><h3 class="svc-title">Mobile App Growth</h3></div><div class="svc-body"><p>App install campaigns with event optimization via Firebase, focused on lowering CPI while sustaining high-volume monthly installs.</p><div class="svc-tags"><span class="svc-pill">App Installs</span><span class="svc-pill">Event Optimization</span><span class="svc-pill">Firebase</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-brown"><span class="svc-icon">📋</span><h3 class="svc-title">Media Strategy &amp; Planning</h3></div><div class="svc-body"><p>Full campaign briefs, audience mapping, budget allocation in EGP/SAR/USD, creative frameworks, and KPI targets per funnel stage.</p><div class="svc-tags"><span class="svc-pill">Full Funnel</span><span class="svc-pill">Creative Briefs</span><span class="svc-pill">Budget Planning</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-teal"><span class="svc-icon">📈</span><h3 class="svc-title">Performance Reporting</h3></div><div class="svc-body"><p>Monthly client reports with real insights — what worked, what didn't, and the exact roadmap for the next sprint. Arabic &amp; English.</p><div class="svc-tags"><span class="svc-pill">Arabic</span><span class="svc-pill">English</span><span class="svc-pill">Dashboards</span></div></div></article></div>
+                    <div class="svc-group"><article class="svc-card"><div class="svc-head svc-blue"><span class="svc-icon">📊</span><h3 class="svc-title">Paid Media Management</h3></div><div class="svc-body"><p>End-to-end campaign management. TOF/MOF/BOF architecture, daily budget shifts, kill rules, and ROAS scaling with data-backed decisions.</p><div class="svc-tags"><span class="svc-pill">Meta</span><span class="svc-pill">TikTok</span><span class="svc-pill">Snapchat</span><span class="svc-pill">Google</span></div></div></article><article class="svc-card"><div class="svc-head svc-green"><span class="svc-icon">🎯</span><h3 class="svc-title">Lead Generation (High Ticket)</h3></div><div class="svc-body"><p>Qualified lead strategies for clinics, education, and services. Website-redirect funnels, audience segmentation, and CPL optimization.</p><div class="svc-tags"><span class="svc-pill">Beauty Clinics</span><span class="svc-pill">Aviation</span><span class="svc-pill">High Ticket</span></div></div></article><article class="svc-card"><div class="svc-head svc-navy"><span class="svc-icon">🛍️</span><h3 class="svc-title"><span class="nw">E-Commerce</span> Scaling</h3></div><div class="svc-body"><p>Fashion, fragrance, beauty, and accessories brands scaled profitably. Proven in the Egyptian market.</p><div class="svc-tags"><span class="svc-pill">Egypt</span></div></div></article><article class="svc-card"><div class="svc-head svc-purple"><span class="svc-icon">📱</span><h3 class="svc-title">Mobile App Growth</h3></div><div class="svc-body"><p>App install campaigns with event optimization via Firebase, focused on lowering CPI while sustaining high-volume monthly installs.</p><div class="svc-tags"><span class="svc-pill">App Installs</span><span class="svc-pill">Event Optimization</span><span class="svc-pill">Firebase</span></div></div></article><article class="svc-card"><div class="svc-head svc-brown"><span class="svc-icon">📋</span><h3 class="svc-title">Media Strategy &amp; Planning</h3></div><div class="svc-body"><p>Full campaign briefs, audience mapping, budget allocation in EGP/SAR/USD, creative frameworks, and KPI targets per funnel stage.</p><div class="svc-tags"><span class="svc-pill">Full Funnel</span><span class="svc-pill">Creative Briefs</span><span class="svc-pill">Budget Planning</span></div></div></article><article class="svc-card"><div class="svc-head svc-teal"><span class="svc-icon">📈</span><h3 class="svc-title">Performance Reporting</h3></div><div class="svc-body"><p>Monthly client reports with real insights — what worked, what didn't, and the exact roadmap for the next sprint. Arabic &amp; English.</p><div class="svc-tags"><span class="svc-pill">Arabic</span><span class="svc-pill">English</span><span class="svc-pill">Dashboards</span></div></div></article></div>
+                    <div class="svc-group" aria-hidden="true"><article class="svc-card" aria-hidden="true"><div class="svc-head svc-blue"><span class="svc-icon">📊</span><h3 class="svc-title">Paid Media Management</h3></div><div class="svc-body"><p>End-to-end campaign management. TOF/MOF/BOF architecture, daily budget shifts, kill rules, and ROAS scaling with data-backed decisions.</p><div class="svc-tags"><span class="svc-pill">Meta</span><span class="svc-pill">TikTok</span><span class="svc-pill">Snapchat</span><span class="svc-pill">Google</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-green"><span class="svc-icon">🎯</span><h3 class="svc-title">Lead Generation (High Ticket)</h3></div><div class="svc-body"><p>Qualified lead strategies for clinics, education, and services. Website-redirect funnels, audience segmentation, and CPL optimization.</p><div class="svc-tags"><span class="svc-pill">Beauty Clinics</span><span class="svc-pill">Aviation</span><span class="svc-pill">High Ticket</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-navy"><span class="svc-icon">🛍️</span><h3 class="svc-title"><span class="nw">E-Commerce</span> Scaling</h3></div><div class="svc-body"><p>Fashion, fragrance, beauty, and accessories brands scaled profitably. Proven in the Egyptian market.</p><div class="svc-tags"><span class="svc-pill">Egypt</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-purple"><span class="svc-icon">📱</span><h3 class="svc-title">Mobile App Growth</h3></div><div class="svc-body"><p>App install campaigns with event optimization via Firebase, focused on lowering CPI while sustaining high-volume monthly installs.</p><div class="svc-tags"><span class="svc-pill">App Installs</span><span class="svc-pill">Event Optimization</span><span class="svc-pill">Firebase</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-brown"><span class="svc-icon">📋</span><h3 class="svc-title">Media Strategy &amp; Planning</h3></div><div class="svc-body"><p>Full campaign briefs, audience mapping, budget allocation in EGP/SAR/USD, creative frameworks, and KPI targets per funnel stage.</p><div class="svc-tags"><span class="svc-pill">Full Funnel</span><span class="svc-pill">Creative Briefs</span><span class="svc-pill">Budget Planning</span></div></div></article><article class="svc-card" aria-hidden="true"><div class="svc-head svc-teal"><span class="svc-icon">📈</span><h3 class="svc-title">Performance Reporting</h3></div><div class="svc-body"><p>Monthly client reports with real insights — what worked, what didn't, and the exact roadmap for the next sprint. Arabic &amp; English.</p><div class="svc-tags"><span class="svc-pill">Arabic</span><span class="svc-pill">English</span><span class="svc-pill">Dashboards</span></div></div></article></div>
                 </div>
             </div>
         </section>
@@ -893,7 +950,7 @@
                         <h3 class="text-xl font-extrabold text-slate-900 mb-2">Google Ads</h3>
                         <p class="text-xs text-amber-600 font-semibold mb-4">Search, PMax & YouTube</p>
                         <ul class="space-y-2.5 text-xs text-slate-600">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Performance Max (PMax) E-commerce Setup</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Performance Max (PMax) <span class="nw">E-commerce</span> Setup</li>
                             <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> High-Intent Search Campaign Funnels</li>
                             <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Merchant Center & Product Feed Audits</li>
                             <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> YouTube Video Ads & Remarketing</li>
@@ -1012,7 +1069,7 @@
                     <p class="ft-sub">Let's build campaigns that generate real revenue — not just impressions. One conversation changes everything.</p>
                     <div class="ft-btns">
                         <a class="ft-btn ft-btn-mail" href="mailto:omarrkhaled100@gmail.com?subject=Scaling%20my%20store%27s%20ROAS">Send an Email <span class="ft-arrow">→</span></a>
-                        <a class="ft-btn ft-btn-wa" href="https://wa.me/201033177357" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                        <a class="ft-btn ft-btn-wa" href="https://wa.me/201033177357" target="_blank" rel="noopener noreferrer"><svg class="wa-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa-sym"></use></svg> WhatsApp</a>
                     </div>
 
                 </div>
@@ -1020,7 +1077,7 @@
                 <div class="fx" id="fxGrid">
                     <div class="fx-col fx-brand" style="--i:0">
                         <a href="#top" class="fx-logo">Omar Khaled<b>.</b></a>
-                        <p>Performance Media Buyer — turning paid ad spend into predictable e-commerce revenue.</p>
+                        <p>Performance Media Buyer — turning paid ad spend into predictable <span class="nw">e-commerce</span> revenue.</p>
                         <p>Cairo, Egypt.</p>
                     </div>
                     <div class="fx-col" style="--i:1">
@@ -1040,7 +1097,7 @@
                     <div class="fx-col" style="--i:3">
                         <h4>Contact</h4>
                         <a href="mailto:omarrkhaled100@gmail.com">Email</a>
-                        <a href="https://wa.me/201033177357" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                        <a href="https://wa.me/201033177357" target="_blank" rel="noopener noreferrer" class="fx-wa"><svg class="wa-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa-sym"></use></svg>WhatsApp</a>
                         <a href="https://www.linkedin.com/in/omar-khaled-605211315" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                         <a href="https://instagram.com/omarrkhaledd._" target="_blank" rel="noopener noreferrer">Instagram</a>
                     </div>
@@ -1220,6 +1277,73 @@
             sec.addEventListener('mousemove',function(e){var r=sec.getBoundingClientRect();tx=-((e.clientX-r.left)/r.width-.5)*70;ty=-((e.clientY-r.top)/r.height-.5)*50;});
             sec.addEventListener('mouseleave',function(){tx=0;ty=0;});
             (function f(){x+=(tx-x)*.05;y+=(ty-y)*.05;par.style.setProperty('--px',x.toFixed(1)+'px');par.style.setProperty('--py',y.toFixed(1)+'px');requestAnimationFrame(f);})();
+        })();
+    </script>
+
+    <!-- Quick questions: side widget -->
+    <aside class="wq" id="wq" aria-label="Quick questions">
+        <button class="wq-pill" id="wqPill" type="button" aria-expanded="false"><span class="wq-dot"></span> Quick questions</button>
+        <div class="wq-card" role="group" aria-labelledby="wqTitle">
+            <button class="wq-x" id="wqMin" type="button" aria-label="Minimize">–</button>
+            <h3 id="wqTitle">Quick questions</h3>
+            <p class="wq-sub">Answer 3 things and I’ll reply with the right plan 👇</p>
+
+            <label class="wq-l" for="wqIndustry">Your industry</label>
+            <input class="wq-in" id="wqIndustry" type="text" placeholder="e.g. Fashion, perfumes, clinics" autocomplete="off">
+
+            <span class="wq-l">Monthly ad budget (EGP)</span>
+            <div class="wq-chips" id="wqChips">
+                <button type="button" data-v="Under 10,000">Under 10k</button>
+                <button type="button" data-v="10,000 - 30,000">10k–30k</button>
+                <button type="button" data-v="30,000 - 100,000">30k–100k</button>
+                <button type="button" data-v="100,000+">100k+</button>
+            </div>
+
+            <label class="wq-l" for="wqLink">Store or Instagram link <em>(optional)</em></label>
+            <input class="wq-in" id="wqLink" type="text" placeholder="e.g. instagram.com/yourstore" autocomplete="off">
+
+            <button class="wq-go" type="button" id="wqGo"><svg class="wa-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa-sym"></use></svg><b>Continue on WhatsApp</b> <span>→</span></button>
+            <a class="wq-skip" href="https://wa.me/201033177357" target="_blank" rel="noopener noreferrer" data-direct>Skip, just open chat</a>
+        </div>
+    </aside>
+
+    <script>
+        // Quick-questions side widget: always visible on the side, WhatsApp buttons open/focus it
+        (function(){
+            var NUM='201033177357',wq=document.getElementById('wq');if(!wq)return;
+            var ind=document.getElementById('wqIndustry'),link=document.getElementById('wqLink'),chips=wq.querySelectorAll('#wqChips button'),pill=document.getElementById('wqPill'),budget='';
+            var desk=window.matchMedia&&matchMedia('(min-width:900px)').matches;
+            function saved(){try{return sessionStorage.getItem('wqState');}catch(e){return null;}}
+            function save(v){try{sessionStorage.setItem('wqState',v);}catch(e){}}
+            function setOpen(o,focus){wq.classList.toggle('wq-open',o);pill.setAttribute('aria-expanded',o?'true':'false');save(o?'open':'min');if(o&&focus)setTimeout(function(){ind.focus();},350);}
+            var st=saved();setOpen(st?st==='open':desk,false);
+            setTimeout(function(){wq.classList.add('wq-ready');},1200);
+            pill.addEventListener('click',function(){setOpen(true,true);});
+            document.getElementById('wqMin').addEventListener('click',function(){setOpen(false);});
+            document.addEventListener('keydown',function(e){if(e.key==='Escape'&&wq.classList.contains('wq-open'))setOpen(false);});
+            document.addEventListener('click',function(e){
+                var a=e.target.closest&&e.target.closest('a[href^="https://wa.me/"]');
+                if(a&&!a.hasAttribute('data-direct')&&!wq.contains(a)){
+                    e.preventDefault();wq.classList.add('wq-ready');
+                    var was=wq.classList.contains('wq-open');setOpen(true,true);
+                    wq.classList.remove('wq-ping');void wq.offsetWidth;wq.classList.add('wq-ping');setTimeout(function(){wq.classList.remove('wq-ping');},800);
+                }
+            });
+            chips.forEach(function(b){b.addEventListener('click',function(){
+                var same=b.classList.contains('on');chips.forEach(function(c){c.classList.remove('on');});
+                if(same){budget='';}else{b.classList.add('on');budget=b.getAttribute('data-v');}
+            });});
+            ind.addEventListener('input',function(){ind.classList.remove('wq-err');});
+            document.getElementById('wqGo').addEventListener('click',function(){
+                var i=ind.value.trim();
+                if(!i){ind.classList.remove('wq-err');void ind.offsetWidth;ind.classList.add('wq-err');ind.focus();return;}
+                var lines=['Hi Omar, I\u2019d like to talk about scaling my ads.','Industry: '+i];
+                if(budget)lines.push('Monthly ad budget: '+budget+' EGP');
+                var l=link.value.trim();if(l)lines.push('Store/Instagram: '+l);
+                window.open('https://wa.me/'+NUM+'?text='+encodeURIComponent(lines.join('\n')),'_blank','noopener');
+                ind.value='';link.value='';budget='';chips.forEach(function(c){c.classList.remove('on');});
+                setOpen(false);
+            });
         })();
     </script>
 </body>
