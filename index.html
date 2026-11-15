@@ -603,7 +603,7 @@
 
 
         /* Quick questions: small side widget */
-        .wq{position:fixed;right:36px;bottom:18px;z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:10px;pointer-events:none;font-family:'Inter',sans-serif;opacity:0;transform:translateX(30px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+        .wq{position:fixed;right:18px;bottom:18px;z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:10px;pointer-events:none;font-family:'Inter',sans-serif;opacity:0;transform:translateX(30px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
         .wq.wq-ready{opacity:1;transform:none}
         .wq-card,.wq-pill{pointer-events:auto}
         .wq-card{position:relative;width:296px;max-width:calc(100vw - 24px);background:rgba(255,255,255,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid #DCE2EC;border-radius:20px;padding:18px 16px 14px;box-shadow:0 24px 50px -18px rgba(15,23,42,.45);transform-origin:bottom right;transition:opacity .3s ease,transform .4s cubic-bezier(.2,.8,.2,1),visibility 0s linear .4s;opacity:0;visibility:hidden;transform:translateY(16px) scale(.94)}
@@ -636,7 +636,7 @@
         @keyframes wqBob{50%{transform:translateY(-4px)}}
         .wq.wq-ping .wq-card{animation:wqPing .7s ease}
         @keyframes wqPing{40%{transform:scale(1.04);box-shadow:0 0 0 6px rgba(0,180,255,.25),0 24px 50px -18px rgba(15,23,42,.45)}}
-        @media(max-width:899px){.wq{right:24px;bottom:12px}.wq-open{left:12px}.wq-card{width:100%;max-width:none}}
+        @media(max-width:899px){.wq{right:12px;bottom:12px}.wq-open{left:12px}.wq-card{width:100%;max-width:none}}
         @media (prefers-reduced-motion:reduce){.wq,.wq-card,.wq-pill{transition:none;animation:none}.wq-in.wq-err{animation:none}}
 
         .wq:not(.wq-open) .wq-card{position:absolute;right:0;bottom:0}
@@ -699,8 +699,8 @@
                 <nav class="nv-links" aria-label="Main">
                     <a href="#results" data-spy="results">Work</a>
                     <a href="#services" data-spy="services">Services</a>
-                    <a href="#platforms" data-spy="platforms">Platforms</a>
                     <a href="#brands" data-spy="brands">Brands</a>
+                    <a href="#platforms" data-spy="platforms">Platforms</a>
                     <a href="#contact" data-spy="contact">Contact</a>
                 </nav>
 
@@ -713,8 +713,8 @@
             <div class="nv-menu" id="nvMenu">
                 <a href="#results">Work</a>
                 <a href="#services">Services</a>
-                <a href="#platforms">Platforms</a>
                 <a href="#brands">Brands</a>
+                <a href="#platforms">Platforms</a>
                 <a href="#contact">Contact</a>
                 <a class="nv-menu-cta" href="mailto:omarrkhaled100@gmail.com?subject=Hiring%20Omar%20Khaled">omarrkhaled100@gmail.com</a>
             </div>
@@ -924,6 +924,25 @@
             </div>
         </section>
 
+        <!-- WORKING BRANDS (infinite marquee) -->
+        <section id="brands" class="py-16 overflow-hidden">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal flex items-center gap-3 mb-4">
+                    <span class="block w-9 h-0.5 bg-blue-600 rounded"></span>
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-[0.3em]">Working Brands</span>
+                </div>
+                <h2 class="reveal text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-xl">Brands That Trusted the Process.</h2>
+                <p class="reveal text-sm sm:text-base text-slate-600 mt-3 max-w-xl">A selection of brands across multiple industries and markets.</p>
+
+                <div class="reveal brands-marquee mt-10" aria-label="Brands I have worked with">
+                    <div class="brands-track">
+                        <div class="brands-group"><div class="brand-item"><div class="brand-logo"><img src="pulm.png" alt="PULM logo" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">PULM</span></div><span class="brand-sep"></span><div class="brand-item"><div class="brand-logo"><img src="gochat.png" alt="GoChat logo" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">GoChat</span></div><span class="brand-sep"></span><div class="brand-item"><div class="brand-logo"><img src="mokhtabary.png" alt="Mokhtabary logo" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">Mokhtabary</span></div><span class="brand-sep"></span><div class="brand-item"><div class="brand-logo"><img src="21scent.png" alt="21 Scent logo" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">21 Scent</span></div><span class="brand-sep"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="pulm.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">PULM</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="gochat.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">GoChat</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="mokhtabary.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">Mokhtabary</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="21scent.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">21 Scent</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="pulm.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">PULM</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="gochat.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">GoChat</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="mokhtabary.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">Mokhtabary</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="21scent.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">21 Scent</span></div><span class="brand-sep" aria-hidden="true"></span></div>
+                        <div class="brands-group" aria-hidden="true"><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="pulm.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">PULM</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="gochat.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">GoChat</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="mokhtabary.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">Mokhtabary</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="21scent.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">21 Scent</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="pulm.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">PULM</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="gochat.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">GoChat</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="mokhtabary.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">Mokhtabary</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="21scent.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">21 Scent</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="pulm.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">PULM</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="gochat.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">GoChat</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="mokhtabary.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">Mokhtabary</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="21scent.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">21 Scent</span></div><span class="brand-sep" aria-hidden="true"></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- PLATFORMS HANDLED SECTION -->
         <section id="platforms" class="py-16">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -988,26 +1007,7 @@
         </section>
 
 
-        <!-- WORKING BRANDS (infinite marquee) -->
-        <section id="brands" class="py-16 overflow-hidden">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="reveal flex items-center gap-3 mb-4">
-                    <span class="block w-9 h-0.5 bg-blue-600 rounded"></span>
-                    <span class="text-xs font-bold text-blue-600 uppercase tracking-[0.3em]">Working Brands</span>
-                </div>
-                <h2 class="reveal text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-xl">Brands That Trusted the Process.</h2>
-                <p class="reveal text-sm sm:text-base text-slate-600 mt-3 max-w-xl">A selection of brands across multiple industries and markets.</p>
-
-                <div class="reveal brands-marquee mt-10" aria-label="Brands I have worked with">
-                    <div class="brands-track">
-                        <div class="brands-group"><div class="brand-item"><div class="brand-logo"><img src="pulm.png" alt="PULM logo" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">PULM</span></div><span class="brand-sep"></span><div class="brand-item"><div class="brand-logo"><img src="gochat.png" alt="GoChat logo" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">GoChat</span></div><span class="brand-sep"></span><div class="brand-item"><div class="brand-logo"><img src="mokhtabary.png" alt="Mokhtabary logo" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">Mokhtabary</span></div><span class="brand-sep"></span><div class="brand-item"><div class="brand-logo"><img src="21scent.png" alt="21 Scent logo" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">21 Scent</span></div><span class="brand-sep"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="pulm.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">PULM</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="gochat.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">GoChat</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="mokhtabary.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">Mokhtabary</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="21scent.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">21 Scent</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="pulm.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">PULM</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="gochat.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">GoChat</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="mokhtabary.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">Mokhtabary</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="21scent.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">21 Scent</span></div><span class="brand-sep" aria-hidden="true"></span></div>
-                        <div class="brands-group" aria-hidden="true"><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="pulm.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">PULM</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="gochat.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">GoChat</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="mokhtabary.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">Mokhtabary</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="21scent.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">21 Scent</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="pulm.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">PULM</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="gochat.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">GoChat</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="mokhtabary.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">Mokhtabary</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="21scent.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">21 Scent</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="pulm.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">PULM</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="gochat.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">GoChat</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="mokhtabary.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">Mokhtabary</span></div><span class="brand-sep" aria-hidden="true"></span><div class="brand-item" aria-hidden="true"><div class="brand-logo"><img src="21scent.png" alt="" width="96" height="96" loading="lazy" decoding="async"></div><span class="brand-name">21 Scent</span></div><span class="brand-sep" aria-hidden="true"></span></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CORE MEDIA BUYING SERVICES -->
+                <!-- CORE MEDIA BUYING SERVICES -->
         <section id="capabilities" class="py-16 bg-white/50 backdrop-blur-md border-t border-b border-slate-200/80">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 
@@ -1079,7 +1079,7 @@
                     <p class="ft-sub">Let's build campaigns that generate real revenue — not just impressions. One conversation changes everything.</p>
                     <div class="ft-btns">
                         <a class="ft-btn ft-btn-mail" href="mailto:omarrkhaled100@gmail.com?subject=Scaling%20my%20store%27s%20ROAS">Send an Email <span class="ft-arrow">→</span></a>
-                        <a class="ft-btn ft-btn-wa" href="https://wa.me/201033177357" target="_blank" rel="noopener noreferrer"> WhatsApp</a>
+                        <a class="ft-btn ft-btn-wa" href="https://wa.me/201033177357" target="_blank" rel="noopener noreferrer"><svg class="wa-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa-sym"></use></svg> WhatsApp</a>
                     </div>
 
                 </div>
@@ -1094,8 +1094,8 @@
                         <h4>Navigate</h4>
                         <a href="#results">Work</a>
                         <a href="#services">Services</a>
-                        <a href="#platforms">Platforms</a>
                         <a href="#brands">Brands</a>
+                        <a href="#platforms">Platforms</a>
                         <a href="#contact">Contact</a>
                     </div>
                     <div class="fx-col" style="--i:2">
@@ -1107,7 +1107,7 @@
                     <div class="fx-col" style="--i:3">
                         <h4>Contact</h4>
                         <a href="mailto:omarrkhaled100@gmail.com">Email</a>
-                        <a href="https://wa.me/201033177357" target="_blank" rel="noopener noreferrer" class="fx-wa">WhatsApp</a>
+                        <a href="https://wa.me/201033177357" target="_blank" rel="noopener noreferrer" class="fx-wa"><svg class="wa-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#wa-sym"></use></svg>WhatsApp</a>
                         <a href="https://www.linkedin.com/in/omar-khaled-605211315" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                         <a href="https://instagram.com/omarrkhaledd._" target="_blank" rel="noopener noreferrer">Instagram</a>
                     </div>
